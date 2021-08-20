@@ -1,0 +1,648 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+
+.c-gradient-effect {
+  text-align: center;
+  position: relative;
+  margin-top: 100px;
+}
+
+.c-gradient-effect button.c-gradient-btn {
+  font-size: 30px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #09ff00, #fff, #01bb1a);
+  background-size: 250% 200%;
+}
+
+.c-gradient-effect .animate-gradient {
+  animation: gradient 2s ease-in-out forwards;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.c-letter-roll {
+  text-align: center;
+  position: relative;
+  margin: 50px 0;
+}
+
+.c-letter-roll button.c-letter-btn {
+  font-size: 30px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #2d2e43;
+  color: #fff;
+}
+
+.c-letter-roll button.c-letter-btn > div {
+  overflow: hidden;
+  line-height: 27px;
+}
+
+.c-letter-roll span {
+  will-change: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+}
+
+.c-letter-roll button.c-letter-btn:hover span {
+  transform: translateY(30px);
+}
+
+.c-ripple-click {
+  text-align: center;
+  position: relative;
+  margin: 50px 0;
+}
+
+.c-ripple-click button.ripple-click-btn {
+  font-size: 30px;
+  padding: 15px 25px;
+  min-width: 64px;
+  border: none;
+  border-radius: 5px;
+  background-color: #5fbb97;
+  color: #fff;
+  line-height: 30px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  outline: none;
+}
+
+.c-ripple-click button.ripple-click-btn > span {
+  pointer-events: none;
+}
+
+.c-ripple-click button.ripple-click-btn span.ripple-click-effect {
+  will-change: transform;
+  position: absolute;
+  left: 20px;
+  right: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  transform: scale(5.3);
+  bottom: 0;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0);
+  background: radial-gradient(transparent 40%, #8ddca4 100%);
+}
+
+.c-ripple-hover {
+  text-align: center;
+  position: relative;
+  margin: 50px 0;
+}
+
+.c-ripple-hover button.ripple-hover-btn {
+  font-size: 30px;
+  padding: 15px 25px;
+  min-width: 64px;
+  border: none;
+  border-radius: 5px;
+  background-color: #067bc2;
+  color: #fff;
+  line-height: 30px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  outline: none;
+}
+
+.c-ripple-hover button.ripple-hover-btn > span {
+  pointer-events: none;
+}
+
+.c-ripple-hover button.ripple-hover-btn span.ripple-hover-effect {
+  will-change: transform;
+  position: absolute;
+  left: 20px;
+  right: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  transform: scale(4);
+  bottom: 0;
+  border-radius: 50%;
+  z-index: -1;
+  transition: transform 0.6s ease-in-out;
+  transform: scale(0);
+  background: radial-gradient(transparent 40%, #129ff8 100%);
+}
+
+.droplets {
+  text-align: center;
+  position: relative;
+  margin: 50px;
+}
+
+.droplets svg {
+  overflow: visible;
+}
+
+.droplets .circles {
+  filter: url("#circle-gooey");
+  -webkit-filter: url("#circle-gooey");
+}
+
+.droplets .droplets {
+  font-size: 38px;
+  fill: #fff;
+}
+
+.c-form-check {
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.5em;
+  margin-bottom: 0.125rem;
+  overflow: hidden;
+}
+
+.c-form-check .svg-radio {
+  position: relative;
+  display: inline-block;
+  width: 39px;
+  height: 39px;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.c-form-check .svg-radio:hover .main-circ {
+  transform: scale(0.9);
+}
+
+.c-form-check .svg-radio svg {
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.c-form-check .svg-radio svg .top-circles {
+  filter: url("#check-gooey");
+  -webkit-filter: url("#check-gooey");
+}
+
+.c-form-check .svg-radio svg .top-circles circle {
+  transform-origin: center;
+  transform: translateY(-135%);
+  will-change: transform;
+}
+
+.c-form-check .svg-radio svg .main-circ {
+  transform-origin: center;
+  transition: transform 0.5s ease;
+  transform: scale(1);
+}
+
+.c-form-check .svg-radio svg .scale-second-circ {
+  animation: animateSecond 1s 0.5s ease forwards;
+}
+
+.c-form-check .svg-radio svg .scale-third-circ {
+  animation: animateThird 1.4s 0.7s ease forwards;
+}
+
+@keyframes animateSecond {
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes animateThird {
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.c-form-check .check-input.radio {
+  width: inherit;
+  height: inherit;
+  margin-left: 0;
+  margin-top: 0;
+  vertical-align: top;
+  background-color: #0d6efd;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.c-form-check .check-active.radio {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+  margin: 7px 0;
+}
+
+.c-form-check .check-active.radio:hover {
+  background-color: aliceblue;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.c-form-check .check-input.radio {
+  border-radius: 50%;
+}
+
+.c-form-check label {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.c-night-day {
+  margin: 5rem 0;
+}
+
+.c-night-day .toggle-night-day {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c-night-day .toggle-night-day p {
+  margin-bottom: 3px;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.c-night-day .switch {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  margin: 0 10px;
+  background: linear-gradient(to bottom, #2f2f2f, #6b6b6b 140px);
+  background-image: -webkit-linear-gradient(top, #2f2f2f, #6b6b6b 140px);
+  border-radius: 75px;
+  box-shadow: inset 0 -1px #7b7b7b, 0 -1px #585858, inset 0 -1px 11px rgba(0, 0, 0, 0.72), 0px -1px 33px 23px rgba(225, 225, 225, 0.35);
+  cursor: pointer;
+  box-sizing: content-box;
+}
+
+.c-night-day .switch-input {
+  position: absolute;
+  top: 0;
+  transform: translateX(0px);
+  opacity: 0;
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+}
+
+.c-night-day .switch-input:checked ~ .switch-handle {
+  transform: translateX(200%);
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.6), inset 0px 0.5 rgba(255, 255, 255, 0.2);
+}
+
+.c-night-day svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.c-night-day .switch-label {
+  position: relative;
+  display: block;
+  height: inherit;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), inset 0 0 7px rgba(0, 0, 0, 0.5);
+  box-sizing: content-box;
+}
+
+.c-night-day .switch-background {
+  display: block;
+  height: inherit;
+  border-radius: inherit;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #020217 0%, #1a1c42 24%, #428ff0 57%, #7ac1fd 100%);
+  background-size: 100% 400%;
+  background-position: 0% 100%;
+  pointer-events: none;
+  transition: background-position 2s ease;
+}
+
+.c-night-day .switch-handle {
+  position: absolute;
+  top: 9.5px;
+  width: 101px;
+  height: 101px;
+  background: linear-gradient(to bottom, #545454 40%, #191919);
+  background-image: -webkit-linear-gradient(top, #545454 40%, #191919);
+  border-radius: 100%;
+  box-shadow: -4px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.c-night-day .switch-handle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to bottom, #333, #9c9c9c 50px);
+  background-image: -webkit-linear-gradient(top, #333, #9c9c9c 50px);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px rgba(225, 225, 225, 0.19), inset 0 0.5px rgba(41, 41, 41, 0.35), 0px -0.5px rgba(255, 255, 255, 0.07);
+}
+
+.c-night-day .switch-handle,
+.c-night-day .switch-label {
+  transition: transform 0.6s ease-out;
+  -webkit-transition: transform 0.6s ease-out;
+  -moz-transition: transform 0.6s ease-out;
+  -o-transition: transform 0.6s ease-out;
+}
+
+.c-night-day #sun-highlight-balls circle {
+  transform: translate(0, 0);
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.c-night-day #moon, .c-night-day #sun {
+  will-change: transform;
+}
+
+.c-night-day .night-star {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.c-night-day .day-star-big {
+  transform-origin: 92px 288px;
+  opacity: 0;
+}
+
+.c-night-day .day-star {
+  opacity: 0;
+  transform-origin: 399px 165px;
+}
+
+.c-night-day .twinkle {
+  transform-origin: center;
+  animation: twinkle 2.8s ease infinite forwards;
+}
+
+@keyframes twinkle {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.c-night-day .twinkle-day {
+  animation: twinkleDay .9s ease infinite alternate;
+}
+
+@keyframes twinkleDay {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.2);
+    opacity: .2;
+  }
+}
+
+.smoke-stack {
+  height: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.smoke-stack svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: visible;
+  width: 50%;
+}
+
+.smoke-stack .smoke {
+  transform-origin: 355.5px 17px;
+}
+
+.smoke-stack .rear_wheel {
+  transform-origin: 113.1px 304.2px;
+}
+
+.loading-one .is-loading {
+  padding: 12px;
+  border-radius: 40px;
+  background: 0;
+  border: 2px solid #ffb063;
+  font-size: 21px;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  color: #ffb063;
+  display: block;
+  margin: 1rem auto;
+  font-weight: 600;
+}
+
+.loading-one .rotate {
+  width: 200px;
+  margin: 10px 15px;
+  position: relative;
+  height: 20px;
+}
+
+.loading-one .rotate div {
+  border-radius: 50%;
+  background: black;
+  position: absolute;
+  will-change: transform;
+}
+
+.c-roll-off {
+  text-align: center;
+  position: relative;
+  margin: 50px 0;
+}
+
+.c-roll-off button.c-roll-btn {
+  font-size: 30px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #2d2e43;
+  line-height: 0.5;
+  color: #fff;
+}
+
+.c-roll-off button.c-roll-btn svg {
+  overflow: visible;
+}
+
+.c-roll-off button.c-roll-btn .roll-btn-text {
+  line-height: 27px;
+}
+
+.c-roll-off button.c-roll-btn .roll-btn-text span {
+  display: inline-block;
+  white-space: pre;
+}
+
+.c-paper-plane {
+  position: relative;
+  top: 100px;
+  max-width: 300px;
+}
+
+.c-paper-plane .scene {
+  transform-style: preserve-3d;
+  transform: rotate3d(0.5, -0.1, -0.6, 58deg);
+}
+
+.c-paper-plane svg.paper-plane {
+  transform: rotateX(0) translateZ(-3px);
+  transform-origin: center;
+}
+
+.c-paper-plane .paper-tail {
+  transform: rotateX(0deg) translate(31px, 10px) translateZ(-5px);
+  transform-origin: center;
+  fill: grey;
+}
+
+.c-paper-plane .paper-tail-div {
+  transform: rotateX(269deg) translate(237px, 55px) translateZ(139px);
+  transform-origin: center;
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 100px solid red;
+  border-right: 150px solid transparent;
+  filter: url("#goo");
+}
+
+.playground {
+  text-align: center;
+  position: relative;
+  margin: 100px;
+}
+
+.playground svg {
+  overflow: visible;
+}
+
+.playground .circless {
+  filter: url("#circle-gooey");
+  filter: url("#rect-gooey");
+}
+
+.playground .drip {
+  animation: easeOutBounce 4s;
+}
+
+.playground .Rrrrr {
+  font-size: 38px;
+  fill: #fff;
+}
+
+@keyframes drip {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+.for-product-loading {
+  margin: 5rem 0;
+  text-align: center;
+}
+
+.for-product-loading button.c-loader-spin {
+  width: 135px;
+  height: 50px;
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+  background: #1A4124;
+  border-radius: 5px;
+}
+
+.for-product-loading svg {
+  width: 100%;
+  height: 100%;
+}
+
+.for-product-loading svg circle {
+  transform: translate(50%, 50%);
+}
+
+.for-product-loading svg circle.first {
+  transform: translate(50%, 50%);
+}
+
+.for-product-loading svg circle.second {
+  transform: translate(50%, 50%);
+}
+/*# sourceMappingURL=stylesheet.css.map */
