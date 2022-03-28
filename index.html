@@ -8,8 +8,8 @@
     <title>The HTML5 Herald</title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" href="assets/stylesheet.css">
     <link href="https:fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
@@ -26,6 +26,17 @@
         <button class="c-letter-btn">ROLL ME</button>
     </div>
     <hr>
+    <div class="c-word-roll">
+        <button class="c-word-btn">
+            <span class="c-word-rotate">
+                <span>SLOAGAN</span>
+                <span>SLOAGAN TWO</span>
+                <span>SLOAGAN THREE</span>
+                <span>SLOAGAN FOUR</span>
+            </span>
+        </button>
+    </div>
+    <hr>
     <div class="c-ripple-click">
         <button class="ripple-click-btn">
             <span class="ripple-click-effect"></span>
@@ -38,6 +49,29 @@
             <span class="ripple-hover-effect"></span>
             <span>RIPPLE HOVER</span>
         </button>
+    </div>
+    <hr>
+    <div class="c-gradient-hover">
+        <a class="section-cta gradient-hover-btn">
+            LIGHT DARK
+        </a>
+        <br><br>
+        <a class="section-cta gradient-hover-btn-one">
+            LIGHT DARK *
+        </a>
+        <br><br>
+        <a class="section-cta gradient-hover-btn-two">
+            LIGHT DARK LIGHT
+        </a>
+        <br><br>
+        <a class="section-cta gradient-hover-btn-three">
+            LIGHT DARK LIGHT *
+        </a>
+        <br><br>
+        <div style="padding: 100px 20px; background-color: #a85252; border-radius: 30px; overflow: hidden;">
+            <a href="" class="bordered-cta gradient-hover-bordered">shop now</a>
+        </div>
+        
     </div>
     <hr>
     <div class="droplets">
@@ -258,14 +292,25 @@
                                     fill: url(#SVGID_7_);
                                 }
 
-                                .rays-st14 {fill: url(#SVGID_8_);}
+                                .rays-st14 {
+                                    fill: url(#SVGID_8_);
+                                }
 
-                                .rays-st15 {fill: url(#SVGID_9_);}
+                                .rays-st15 {
+                                    fill: url(#SVGID_9_);
+                                }
 
-                                .rays-st16 {fill: url(#SVGID_10_); }
+                                .rays-st16 {
+                                    fill: url(#SVGID_10_);
+                                }
 
-                                .rays-st17 { fill: url(#SVGID_11_);}
-                                .rays-st18 {fill: url(#SVGID_12_);}
+                                .rays-st17 {
+                                    fill: url(#SVGID_11_);
+                                }
+
+                                .rays-st18 {
+                                    fill: url(#SVGID_12_);
+                                }
                             </style>
                             <linearGradient id="flying-star-bottom_1_" gradientUnits="userSpaceOnUse" x1="-153.6538"
                                 y1="450.0753" x2="-91.6538" y2="450.0753"
@@ -281,7 +326,8 @@
                                 <stop offset="0.9391" style="stop-color:#D9E0E9" />
                                 <stop offset="1" style="stop-color:#FFFFFF" />
                             </linearGradient>
-                            <path id="flying-star-bottom" filter="url(#motion-blur)" class="ndst22 night-commet" d="M-5.908,451.392c3.97,8.508,0.291,18.624-8.217,22.594
+                            <path id="flying-star-bottom" filter="url(#motion-blur)" class="ndst22 night-commet"
+                                d="M-5.908,451.392c3.97,8.508,0.291,18.624-8.217,22.594
                                 c-8.508,3.97-43.997,12.131-47.967,3.622s24.553-31.889,33.591-34.433C-19,440.5-9.878,442.884-5.908,451.392z" />
                             <linearGradient id="flying-star-top_1_" gradientUnits="userSpaceOnUse" x1="-102.0734"
                                 y1="243.349" x2="-39.8941" y2="243.349"
@@ -300,9 +346,9 @@
                             <path id="flying-star-top" class="ndst23 night-commet" filter="url(#motion-blur)" d="M-13.234,240.841c2.623,9.015-2.766,16.659-11.575,21.072
                                 c-7.381,3.697-29.191,6.587-43.36,5.274c-2.956-0.274-3.961-4.276-2.453-6.833C-62.944,247.34-51,232.5-34.306,229.266
                                 C-25.088,227.48-15.857,231.826-13.234,240.841z" />
-                                <filter id="motion-blur" x="-25%" width="150%" color-interpolation-filters="sRGB">
-                                    <feGaussianBlur in="SourceGraphic" />
-                                </filter>
+                            <filter id="motion-blur" x="-25%" width="150%" color-interpolation-filters="sRGB">
+                                <feGaussianBlur in="SourceGraphic" />
+                            </filter>
                             <g id="sun">
                                 <g id="rays">
                                     <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="157" y1="24.4258"
@@ -559,7 +605,7 @@
                                 c1.405,0.078,2.793,0.074,4.173,0.03c-6.779,11.583-11.004,24.892-11.802,39.214c-2.686,48.192,34.204,89.438,82.396,92.124
                                 c48.193,2.686,89.438-34.204,92.124-82.396C507.955,582.748,471.065,541.503,422.873,538.817z" />
                             </g>
-                            
+
                             <g id="clouds-night-right">
                                 <linearGradient id="top-right-clouds_2_" class="cloud-gradient"
                                     gradientUnits="userSpaceOnUse" x1="1445.3683" y1="870.4878" x2="1445.3683"
@@ -623,7 +669,7 @@
                                 c1.405,0.078,2.793,0.074,4.173,0.03c-6.779,11.583-11.004,24.892-11.802,39.214c-2.686,48.192,34.204,89.438,82.396,92.124
                                 c48.193,2.686,89.438-34.204,92.124-82.396C1314.955,582.748,1278.065,541.503,1229.873,538.817z" />
                             </g>
-                            
+
                         </svg>
                     </span>
                 </span>
@@ -775,57 +821,59 @@
         </svg>
 
     </div>
+    <hr>
     <div class="c-roll-off">
         <button class="c-roll-btn">
 
             <div class="content">
-                <div class="roll-btn-text">ROLL ME OFF THE LINE</div>
-                <svg id="roll-text" viewBox="0 0 100 1" x="0px" y="0px">
+                <div class="roll-btn-text">ROLL ME OFF THE LINE TODAY</div>
+                <svg id="roll-text" viewBox="0 0 100 1">
+                    <!-- <svg id="roll-text" height="1px"> -->
                     <style type="text/css">
                         .roll-line {
                             fill: transparent;
-                            stroke: #FFFFFF;
+                            stroke: #777777;
                             stroke-width: 1;
                         }
                     </style>
                     <!-- <path class="roll-line" d=" M-100,0.5C-100,0.5,-85 0.5, -70 0.5 S-35 -10, -20 -10 S15 0.5, 30 0.5 S100,0.5,100,0.5"/> -->
-                    <g clip-path="url(#clip-rec)">
-                        <path class="roll-line" d="
+                    <!-- <g clip-path="url(#clip-rec)"> -->
+                        <!-- <path class="roll-line" d="
                                 M -200 0.5 
                                 C -200 0.5, -88 0.5, -73 0.5,
                                 S -45.5 -15, -30.5 -15
                                 S -1.5 0.5, 13.5 0.5
                                 S 100 0.5, 100 0.5
-                                " />
-                    </g>
-                    <clipPath id="clip-rec">
-                        <rect x="-2.38" y="-14" class="st1" width="104.76" height="15.5" />
+                                " /> -->
+
+                                <!-- FLAT LINE  -->
+                                <!-- <path id="roll-line"
+                                    d="
+                                    M -200 0.5 
+                                    C -200 0.5, -88 0.5, -73 0.5,
+                                    S -45.5 .5, -30.5 .5
+                                    S -1.5 0.5, 13.5 0.5
+                                    S 100 0.5, 100 0.5
+                                    " /> -->
+                                    <!-- FULL LINE  -->
+                                    <path class="roll-line"
+                                    d="
+                                    M -200 0.5 
+                                    C -200 0.5, -101 0.5, -86 0.5,
+                                    S -58.5 .5, -43.5 .5
+                                    S -13.5 0.5, 0 0.5
+                                    S 100 0.5, 100 0.5
+                                    " />
+                    <!-- </g> -->
+                    <clipPath id="clip-rec" style="overflow: hidden">
+                        <rect x="0" y="-14" class="st1" width="100%" height="62" />
                     </clipPath>
                 </svg>
             </div>
         </button>
     </div>
     <hr>
-    <div class="c-paper-plane">
-        <div class="scene">
-            <svg id="paper-plane" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.549 79.269">
-                <defs>
-                    <filter id="goo">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                            result="goo" />
-                        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                    </filter>
-                </defs>
-                <g class="plane-group">
-                    <path class="paper-wing" d="M47.377,76.654V47.025c0-1.137,0.871-2.084,2.003-2.178l60.357-5.062c0.2-0.01,0.2-0.29,0-0.31l-60.356-5.052
-                    c-1.133-0.095-2.004-1.042-2.004-2.179V2.615c0-1.878,1.922-3.142,3.646-2.399l87.37,37.662c1.54,0.664,1.54,2.848,0,3.512
-                    l-87.37,37.662C49.299,79.796,47.377,78.531,47.377,76.654z" />
-                </g>
-            </svg>
-            <div class="paper-tail-div"></div>
-        </div>
-    </div>
+    
     <div class="playground">
 
         <!-- transform: translateX(0px); -->
@@ -884,35 +932,82 @@
     <hr>
     <div class="for-product-loading">
         <button class="c-loader-spin">
+            <span class="innerText">CLICK ME</span>
+            
             <svg>
                 <!-- x width y and height helps with safari and ios -->
-                <filter id="fancy-goo" x="-50%" width="300%" y="-50%" height="300%" color-interpolation-filters="sRGB">
+                <!-- Use this size for big circles -->
+                <!-- <filter id="spin-goo-big" x="-50%" width="300%" y="-50%" height="300%" color-interpolation-filters="sRGB">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
                     <feColorMatrix in="blur" mode="matrix" values="
                         1 0 0 0 0  
                         0 1 0 0 0  
                         0 0 1 0 0  
-                        0 0 0 19 -9"
-                        result="goo" />
+                        0 0 0 19 -9" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter> -->
+
+                <!-- x width y and height helps with safari and ios -->
+                <!-- Use this size for small circles -->
+                <filter x="-50%" width="200%" y="-50%" height="200%" id="spin-goo-small" color-interpolation-filters="sRGB">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="
+                        1 0 0 0 0  
+                        0 1 0 0 0  
+                        0 0 1 0 0  
+                        0 0 0 29 -6" result="goo" />
                     <feComposite in="SourceGraphic" in2="goo" operator="atop" />
                 </filter>
-                <filter x="-50%" width="200%" y="-50%" height="200%" id="check-goo"
-                                color-interpolation-filters="sRGB">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
-                                <feColorMatrix in="blur" mode="matrix"
-                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 12 -5" result="goo" />
-                                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                            </filter>
                 <filter id="motion-blur" x="-25%" width="150%" color-interpolation-filters="sRGB">
-                    <feGaussianBlur in="SourceGraphic"/>
-                  </filter>
-                <!-- <g filter="url(#fancy-goo) url(#motion-blur"> -->
-                    <g filter="url(#check-goo)">
+                    <feGaussianBlur in="SourceGraphic" />
+                </filter>
+                <!-- <g filter="url(#fancy-goo-big) url(#motion-blur"> -->
+                <g filter="url(#spin-goo-small)">
                     <circle class="first" r="130" fill="#fff" />
+                    <circle class="second" r="26" fill="#fff" />
                     <circle class="second" r="26" fill="#fff" />
                 </g>
                 <!-- </g> -->
-              </svg>
+            </svg>
+        </button>
+        <button class="c-loader-spin">
+            <span class="innerText">CLICK ME</span>
+            
+            <svg>
+                <!-- x width y and height helps with safari and ios -->
+                <!-- Use this size for big circles -->
+                <!-- <filter id="spin-goo-big" x="-50%" width="300%" y="-50%" height="300%" color-interpolation-filters="sRGB">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="
+                        1 0 0 0 0  
+                        0 1 0 0 0  
+                        0 0 1 0 0  
+                        0 0 0 19 -9" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter> -->
+
+                <!-- x width y and height helps with safari and ios -->
+                <!-- Use this size for small circles -->
+                <filter x="-50%" width="200%" y="-50%" height="200%" id="spin-goo-small" color-interpolation-filters="sRGB">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="
+                        1 0 0 0 0  
+                        0 1 0 0 0  
+                        0 0 1 0 0  
+                        0 0 0 29 -6" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter>
+                <filter id="motion-blur" x="-25%" width="150%" color-interpolation-filters="sRGB">
+                    <feGaussianBlur in="SourceGraphic" />
+                </filter>
+                <!-- <g filter="url(#fancy-goo-big) url(#motion-blur"> -->
+                <g filter="url(#spin-goo-small)">
+                    <circle class="first" r="130" fill="#fff" />
+                    <circle class="second" r="26" fill="#fff" />
+                    <circle class="second" r="26" fill="#fff" />
+                </g>
+                <!-- </g> -->
+            </svg>
         </button>
     </div>
     <hr>

@@ -6,3 +6,8 @@ Path Commands:
 
 Recording Size
     Instagram
+
+Animate drawing of path on HTML5 canvas:
+    https://stackoverflow.com/questions/53214214/animate-drawing-of-path-on-html5-canvas
+    https://css-tricks.com/svg-path-syntax-illustrated-guide/
+    

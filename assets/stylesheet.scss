@@ -84,6 +84,53 @@ h3 {
     }
 }
 
+
+
+
+.c-word-roll {
+    text-align: center;
+    position: relative;
+    margin: 50px 0;
+
+    button.c-word-btn {
+        font-size: 26px;
+        line-height: 50px;
+        border: none;
+        border-radius: 5px;
+        background: #2d2e43;
+        color: #fff;
+        width: 250px;
+        height: 50px;
+        cursor: pointer;
+    }
+    .c-word-rotate {
+            display: block;
+            -webkit-transform-style:preserve-3d;
+            -moz-transform-style:preserve-3d;
+            -ms-transform-style:preserve-3d;
+            transform-style:preserve-3d;
+            position: relative;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform: rotateX(0deg);
+        span {
+            position: absolute;
+            text-align: center;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            -webkit-backface-visibility: hidden;
+        }
+        @for $i from 1 through 4 {
+            span:nth-child(#{$i}) {
+                /* translateZ half the height of the item rotating or half the height of the font size */
+                transform: rotateX($i * 90 + deg) translateZ(15px);
+            }
+        }
+    }  
+}
+
 .c-ripple-click {
     text-align: center;
     position: relative;
@@ -160,6 +207,110 @@ h3 {
             transition: transform 0.6s ease-in-out;
             transform: scale(0);
             background: radial-gradient(transparent 40%, #129ff8 100%);
+        }
+    }
+}
+
+.c-gradient-hover {
+    text-align: center;
+    position: relative;
+    margin: 50px 0;
+
+    a.section-cta {
+        margin: 0 auto;
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        max-width: 280px;
+        background: #EBBAA3;
+        border-radius: 30px;
+        height: 40px;
+        color: #111;
+        display: block;
+        line-height: 40px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .bordered-cta {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 201px;
+        color: #fff;
+        border-radius: 30px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #fff;
+        font-size: 18px;
+        display: block;
+        text-align: center;
+        font-family: Futura-PT-Medium;
+    }
+
+    .gradient-hover-bordered {
+        background: linear-gradient(to right, transparent, transparent 40%, #D58778  80%);
+        background-size: 300%;
+        transition: background-position 550ms ease-in, color 555ms ease-in, border 555ms ease-in;
+    
+        background-position: left;
+        &:hover {
+            background-position: right;
+            color: #000;
+            border: 1px solid #000;
+        }
+    }
+
+    a.gradient-hover-btn {
+        background: #EBBAA3;
+        background: linear-gradient(to right, #EBBAA3, #EBBAA3 40%, #D58778  80%);
+        background-size: 300%;
+        transition: background-position 550ms ease-in, color 555ms ease-in;
+    
+        background-position: left;
+        &:hover {
+            background-position: right;
+            color: #fff;
+        }
+    }
+    
+    a.gradient-hover-btn-one {
+        background: #EBBAA3;
+        background: linear-gradient(to right, #EBBAA3, #EBBAA3 20%, #D58778  80%);
+        background-size: 500%;
+        transition: background-position 550ms ease-in-out, color 555ms ease-in;
+    
+        background-position: left;
+        &:hover {
+            background-position: right;
+            color: #fff;
+        }
+        
+    }
+    
+    a.gradient-hover-btn-two {
+        background: #EBBAA3;
+        background: linear-gradient( to right, #EBBAA3,  #D58778, #EBBAA3 );
+        background-size: 3000%;
+        transition: background-position 550ms ease-in, color 555ms ease-in;
+    
+        background-position: left;
+        &:hover {
+            background-position: right;
+            color: #fff;
+        }
+        
+    }
+    a.gradient-hover-btn-three {
+        background: #EBBAA3;
+        background: linear-gradient(to right, #EBBAA3, #EBBAA3 20%, #D58778 50%, #EBBAA3 80%);
+        background-size: 600%;
+        transition: background-position 1250ms ease-in-out, color 1250ms ease-in;
+    
+        background-position: left;
+        &:hover {
+            background-position: right;
+            color: #fff;
         }
     }
 }
@@ -472,6 +623,7 @@ h3 {
         margin: 10px 15px;
         position: relative;
         height: 20px;
+        margin: 0 auto;
         div {
             border-radius: 50%;
             background: black;
@@ -485,10 +637,14 @@ h3 {
     text-align: center;
     position: relative;
     margin: 50px 0;
-
+    .content {
+        overflow: hidden;
+        padding: 10px 0;
+        margin: 0 10px;
+    }
     button.c-roll-btn {
         font-size: 30px;
-        padding: 10px 15px;
+        // padding: 10px 15px;
         border: none;
         border-radius: 5px;
         background: #2d2e43;
@@ -509,35 +665,6 @@ h3 {
     }
 }
 
-.c-paper-plane {
-    position: relative;
-    top: 100px;
-    max-width: 300px;
-    .scene {
-        transform-style: preserve-3d;
-        transform: rotate3d(0.5, -0.1, -0.6, 58deg);
-    }
-    svg.paper-plane {
-        transform: rotateX(0) translateZ(-3px);
-        transform-origin: center;
-    }
-    .paper-tail {
-        transform: rotateX(0deg) translate(31px, 10px) translateZ(-5px);
-        transform-origin: center;
-        fill: grey;
-    }
-    .paper-tail-div {
-        transform: rotateX(269deg) translate(237px, 55px) translateZ(139px);
-        transform-origin: center;
-        position: absolute;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-top: 100px solid red;
-        border-right: 150px solid transparent;
-        filter: url("#goo");
-    }
-}
 .playground {
     text-align: center;
     position: relative;
@@ -582,6 +709,9 @@ h3 {
         padding: 0;
         background: #1A4124;
         border-radius: 5px;
+    }
+    .innerText {
+        pointer-events: none;
     }
     svg {
         width: 100%;

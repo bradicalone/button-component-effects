@@ -28,6 +28,30 @@ function letterSpin() {
 }
 
 
+function wordSpin() {
+    const btn = document.querySelector('.c-word-rotate')
+    let start, reqID, startDist = 0, dist = 360, deg = 0;
+
+    function animate(timestamp) {
+        if(!start) start = timestamp
+        const progress = Math.min((timestamp - start) / 3000, 1)
+        deg = startDist + (progress * dist)
+
+        btn.style.transform = `rotateX(${deg}deg)`
+        if(progress == 1) start = 0 
+        
+        reqID = requestAnimationFrame(animate) 
+    }
+
+    btn.onmouseenter = (e) =>  reqID = requestAnimationFrame(animate)
+    btn.onmouseleave = (e) => {
+        cancelAnimationFrame(reqID)
+        startDist = deg
+        start = 0
+    }
+}
+
+
 function rippleClick(e) {
     const btn = e.target
     const rippleBTN = btn.children[0]
@@ -516,7 +540,7 @@ function smokeTrail() {
     const railWood = document.getElementsByClassName('railwood')[0]
 
     let smokeCount = 25
-
+    let requestID;
     const smokes = []
     const random = (min, max) => Math.random() * (max - min) + min;
     const rubberBand = (startY, distance, progress) => (startY + (distance * Math.sin(progress * Math.PI).toFixed(4)))
@@ -534,6 +558,7 @@ function smokeTrail() {
         return - 0.5 * (--n * (n - 2) - 1);
     };
     function addSmoke() {
+        smokes.length = 0
         while (smokeCount--) {
             let el = smokeTrail.appendChild(smokeElem.cloneNode(true))
             smokes.push({
@@ -550,6 +575,7 @@ function smokeTrail() {
     }
 
     let start = 0
+
     const animate = timestamp => {
         if (!start) start = timestamp;                               // 👈  For train only
         const elapsed = Math.min((timestamp - start) / 3000, 1);     // 👈  For train only
@@ -563,7 +589,7 @@ function smokeTrail() {
                 const progress = Math.min((timestamp - smokes[i].start) / 3000, 1)
                 const scale = Math.max(rubberBand(0, smokes[i].scale, inOutQuad(progress)), 0)
                 // const x = smokes[i].x + outAndBack(0, smokes[i].distX, progress)             // 👈  Uncomment for different X effect
-                const x = smokes[i].x + outAndBack(0, 20, progress)
+                const x = smokes[i].x + outAndBack(0, 30, progress)
                 const y = 0 + (progress * smokes[i].y)
 
                 el.style.transform = `translate(${x}px, ${y}px) scale(${scale})`
@@ -578,14 +604,41 @@ function smokeTrail() {
         rearWheel.style.transform = `rotate(${ease * 1440}deg)`
         railWood.style.transform = `translateX(${0 - (ease * 639)}px)`
 
-        axle.style.transform = `translate(${-25 + (Math.sin((Math.PI * 2) * ease * 2) * 25)}px,${15 - (Math.cos((Math.PI * 2) * ease * 2) * 15)}px) `
+        axle.style.transform = `translate(${-25 + (Math.sin((Math.PI * 2) * ease * 2) * 25)}px, ${15 - (Math.cos((Math.PI * 2) * ease * 2) * 15)}px) `
+
         if (elapsed >= 1)
             start = 0
 
-
-        requestAnimationFrame(animate)
+        requestID = requestAnimationFrame(animate)
     }
     addSmoke()
+
+    function handleVisibilityChange() {
+        if (document.visibilityState === "hidden") {   // 👈  Move to different browser tab
+            console.log('pauseSimulation')
+
+            start = 0
+            window.cancelAnimationFrame(requestID);
+            let k = smokes.length
+            while (k--) {
+                document.querySelectorAll('.smoke')[k].style = null
+                smokes[k].start = 0
+                smokes[k].delay = k * 7
+                // smokes[k].distX = random(-10, 10)
+                // smokes[k].x = random(-10, 10)
+                // smokes[k].y = random(-260, -200)
+                // smokes[k].scale = random(2.2, 3.1)
+            }
+        } else {                               // 👈  Move to the same browser tab (this animation chrome tab)
+            console.log('startSimulation')
+
+            visible = true
+            requestAnimationFrame(animate)
+
+        }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange, false);
 }
 
 function loadingOne() {
@@ -628,15 +681,13 @@ function loadingOne() {
             let scale = 1 - (1 * progress)
 
             circles[0].style.transform = 'scale(' + (1 * progress) + ')'
-            circles[1].style.transform = 'translate3d(' + x + 'px, 0, 0)'
-            circles[2].style.transform = 'translate3d(' + x + 'px, 0, 0)'
+            circles[1].style.transform = 'translate3d(' + x + 'px, 0, 0) scale(' + (1 + (.5 * progress)) + ')'
+            circles[2].style.transform = 'translate3d(' + x + 'px, 0, 0) scale(' + (1.5 - (.5 * progress)) + ')'
             circles[3].style.transform = 'scale(' + -scale + ')'
 
             if (progress < 1) {
                 animateId = requestAnimationFrame(loading.rotateCircles)
             } else {
-                let k = circles.length
-                while (k--) circles[k].style.transform = '';
                 start = 0
                 requestAnimationFrame(loading.rotateCircles)
             }
@@ -700,23 +751,24 @@ const rollOffText = function () {
         console.log(letterData)
     }
     loadLetters()
+    
     let steps = [{
         leftHandle: {
             x: 0,
             y: -10,
-            currentX: -45.5,
-            currentY: -10
+            currentX: -58.5,
+            currentY: .5
         },
         middleAnchor: {
             x: 0,
             y: -10,
-            currentX: -30.5,
-            currentY: -10
+            currentX: -43.5,
+            currentY: .5
         },
         rightHandle: {
             x: 0,
             y: 0,
-            currentX: -1.5,
+            currentX: -15,
             currentY: .5
         }
     },
@@ -744,11 +796,13 @@ const rollOffText = function () {
         const outAndBack = (start, distance, progress) => (start + (distance * Math.sin(progress * (Math.PI)).toFixed(4)))
         const upAndBack = (start, distance, progress) => (start + (distance * Math.cos(progress * (Math.PI)).toFixed(4)))
         // console.log(outAndBack(0, 200, progress),  upAndBack(0, 200, progress))
+        const dist = 200 * progress
 
         // if(step == 1) svg.style.transform = `translate3d(${(svgWidth * 2) * progress}px, 0, 0)`
-        if (step == 1) path.style.transform = `translate3d(${200 * progress}px, 0, 0)`
-        const { x, y } = path.getPointAtLength(130);
-
+        if (step == 1) path.style.transform = `translate3d(${dist}px, 0, 0)`
+        const { x, y } = path.getPointAtLength(131);
+        // console.log('x:', path.style.transform)
+        if(dist > 30 && step == 1) return
 
         const values = Object.keys(steps[step]).map((key, i) => {
             let l = steps[step]['leftHandle']
@@ -764,18 +818,16 @@ const rollOffText = function () {
 
             path.setAttribute('d',
                 `M -200 0.5 
-                 C -200 0.5, -88 0.5, -73 0.5,
+                 C -200 0.5, -101 0.5, -86 0.5,
                  S ${l.X} ${l.Y}, ${m.X} ${m.Y}
-                 S ${r.X} ${r.Y}, 13.5 0.5
+                 S ${r.X} ${r.Y}, 0 0.5
                 S 100 0.5, 100 0.5`
             )
-            // path.setAttribute('d',
-            // `M -200 0.5 
-            // C -200 0.5, -88 0.5, -73 0.5,
-            // S -45.5 .5, -30.5 .5
-            // S -1.5 0.5, 13.5 0.5
-            // S 100 0.5, 100 0.5`
-            // )
+            // M -200 0.5 
+            // C -200 0.5, -101 0.5, -86 0.5,
+            // S -58.5 .5, -43.5 .5
+            // S -13.5 0.5, 0 0.5
+            // S 100 0.5, 100 0.5
             // Returns the current values
             return { leftHandle: { X: l.X, Y: l.Y }, middleAnchor: { X: m.X, Y: m.Y }, rightHandle: { X: r.X, Y: r.Y } }
 
@@ -784,7 +836,7 @@ const rollOffText = function () {
         //  const {x, y} = path.getPointAtLength(pathLength * progress);
 
         // console.log(step, path.getBoundingClientRect().x - wave_top_x_difference)
-        console.log(step, path.getBoundingClientRect().x + 530)
+        // console.log(step, path.getBoundingClientRect().x + 530)
 
 
 
@@ -807,58 +859,81 @@ const rollOffText = function () {
 }
 
 // A True Out and back 
-const outAndBack = (start, distance, progress) => (start + (distance * Math.sin(progress * Math.PI ).toFixed(4)))
-const inBack = function(n){
+const outAndBack = (start, distance, progress) => (start + (distance * Math.sin(progress * Math.PI).toFixed(4)))
+const inBack = function (n) {
     var s = 1.70158;
-    return n * n * (( s + 1 ) * n - s);
+    return n * n * ((s + 1) * n - s);
 };
-const inOutBack = function(n){
+const inOutBack = function (n) {
     var s = 1.70158 * 1.525;
-    if ( ( n *= 2 ) < 1 ) return 0.5 * ( n * n * ( ( s + 1 ) * n - s ) );
-    return 0.5 * ( ( n -= 2 ) * n * ( ( s + 1 ) * n + s ) + 2 );
-  };
-  const inQuint = function(n){
+    if ((n *= 2) < 1) return 0.5 * (n * n * ((s + 1) * n - s));
+    return 0.5 * ((n -= 2) * n * ((s + 1) * n + s) + 2);
+};
+const inQuint = function (n) {
     return n * n * n * n * n;
-  }
-function gooeySpin() {
-    const btn = document.getElementsByClassName('c-loader-spin')[0]
-    const circles = btn.querySelectorAll('circle')
-    const { height } = btn.getBoundingClientRect()
-    const big_r = height / 10;
-    const small_r = big_r - ( big_r * .10 )
-    console.log('small_r:', small_r)
-    circles[0].setAttribute('r', big_r)
-    circles[1].setAttribute('r', small_r)
+}
+const inOutQuart = function (n) {
+    n *= 2;
+    if (n < 1) return 0.5 * n * n * n * n;
+    return -0.5 * ((n -= 2) * n * n * n - 2);
+}
+const inOutQuad = function (n) {
+    n *= 2;
+    if (n < 1) return 0.5 * n * n;
+    return - 0.5 * (--n * (n - 2) - 1);
+}
+const outSine = function (n) {
+    return Math.sin(n * Math.PI / 2);
+};
 
-    const centerPointDist = height / 3
-    const duration = 8000
-    // const durationTwo = duration - duration * .1   // 10% of duration
-    const move = () => {
+function gooeySpin(btns) {          // 👈  buttons 
+
+    const centers = Array.from(btns).map((btn) => {
+        const circles = btn.querySelectorAll('circle')
+        const { height } = btn.getBoundingClientRect()
+        const svg = btn.querySelector('svg')
+
+        svg.style.display = 'none'
+
+        const big_r = height / 11;
+        const small_r = big_r - (big_r * .10)
+
+        circles[0].setAttribute('r', big_r)
+        circles[1].setAttribute('r', big_r)
+        circles[2].setAttribute('r', big_r)
+
+        return height / 3  //  👈  used for animation from center point of buttons
+    })
+    const delay = [10000, 9800, 9600]
+    const duration = 9900
+    const durationTwo = duration - duration * .5  // 👈  10% of duration for second circle delay
+    const move = (circles, centerPointDist) => {
+
         let start = 0
-        
+
         const animate = (timestamp) => {
             let i = circles.length
             if (!start) start = timestamp
             const progress = Math.min((timestamp - start) / duration, 1)
-            // const progTwo = Math.min((timestamp - start) / durationTwo, 1)
+            const progTwo = Math.min((timestamp - start) / durationTwo, 1) // 👈  comment this out if delay is used with an ease Function
 
-            
-            while(i--) {
-                // const prog = i == 0 ? progress : progTwo // progTwo is the delay
-                const prog = i == 0 ? progress : inQuint(progress) // progTwo is the delay
+            while (i--) {
+                // const prog = i == 0 ? progress : progTwo                // 👈  progTwo is the delay
+                // const prog = i == 0 ? progress : inBack(progress)    // 👈  delay with ease instead
+                const prog = Math.min((timestamp - start) / delay[i], 1)
 
-                // Moves away from the center and comes back
-                const centerPoint = outAndBack(0, centerPointDist, prog)
-
-                const degrees = Math.min(1440 * prog, 1440)
-                
+                // const prog = progress
+                const centerPoint = outAndBack(0, centerPointDist, prog)  // 👈  Moves away from the center and comes back
+                // const degrees = 10080 * outSine(prog)
+                const degrees = 2880 * outSine(prog)
+                // const degrees = 2880 * prog
                 const x = centerPoint * Math.cos(degrees * Math.PI / 180);
                 const y = centerPoint * Math.sin(degrees * Math.PI / 180);
 
                 circles[i].style.transform = `translate(50%, 50%) translate(${x}px, ${y}px)`
-
             }
-            if (progress < 1){
+
+            if (progress < 1) {
                 requestAnimationFrame(animate)
             } else {
                 start = 0
@@ -867,25 +942,32 @@ function gooeySpin() {
         }
         requestAnimationFrame(animate)
     }
-    move()
 
+    Array.from(btns).forEach((btn, i) => {
+        btn.onclick = e => {
+            const buttonTarget = e.target
+            console.log('buttonTarget:', buttonTarget)
 
-    btn.onclick = () => {
-        move()
-    }
+            const innerTextElem = buttonTarget.querySelector('.innerText')
+            const svg = buttonTarget.querySelector('svg')
 
+            innerTextElem.style.display = 'none'
+            svg.style.display = 'block'
+            move(svg.querySelectorAll('circle'), centers[i])
+        }
+    })
 }
 
 window.onload = function () {
     gradientEffect()
     letterSpin()
-
+    wordSpin()
     rippleHover()
     splatter()
     radioCheckBox()
     new NightDay()
-    // smokeTrail()
+    // smokeTrail() // Train
     loadingOne()
-    // rollOffText()
-    gooeySpin()
+    rollOffText()
+    gooeySpin(document.getElementsByClassName('c-loader-spin'))
 }
