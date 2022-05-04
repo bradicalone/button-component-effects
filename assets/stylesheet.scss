@@ -12,6 +12,7 @@ body {
 ::before {
     box-sizing: border-box;
 }
+
 a {
     color: #007bff;
     text-decoration: none;
@@ -38,6 +39,7 @@ h3 {
         background: linear-gradient(135deg, #09ff00, #fff, #01bb1a);
         background-size: 250% 200%;
     }
+
     .animate-gradient {
         animation: gradient 2s ease-in-out forwards;
     }
@@ -46,9 +48,11 @@ h3 {
         0% {
             background-position: 0% 0%;
         }
+
         50% {
             background-position: 100% 100%;
         }
+
         100% {
             background-position: 0% 0%;
         }
@@ -68,11 +72,12 @@ h3 {
         background: #2d2e43;
         color: #fff;
 
-        > div {
+        >div {
             overflow: hidden;
             line-height: 27px;
         }
     }
+
     span {
         will-change: transform;
         transition-duration: 0.5s;
@@ -103,17 +108,19 @@ h3 {
         height: 50px;
         cursor: pointer;
     }
+
     .c-word-rotate {
-            display: block;
-            -webkit-transform-style:preserve-3d;
-            -moz-transform-style:preserve-3d;
-            -ms-transform-style:preserve-3d;
-            transform-style:preserve-3d;
-            position: relative;
-            height: 100%;
-            top: 0;
-            left: 0;
-            transform: rotateX(0deg);
+        display: block;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        position: relative;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: rotateX(0deg);
+
         span {
             position: absolute;
             text-align: center;
@@ -122,13 +129,14 @@ h3 {
             width: 100%;
             -webkit-backface-visibility: hidden;
         }
+
         @for $i from 1 through 4 {
             span:nth-child(#{$i}) {
                 /* translateZ half the height of the item rotating or half the height of the font size */
                 transform: rotateX($i * 90 + deg) translateZ(15px);
             }
         }
-    }  
+    }
 }
 
 .c-ripple-click {
@@ -150,9 +158,10 @@ h3 {
         z-index: 0;
         outline: none;
 
-        > span {
+        >span {
             pointer-events: none;
         }
+
         span.ripple-click-effect {
             will-change: transform;
             position: absolute;
@@ -189,9 +198,11 @@ h3 {
         overflow: hidden;
         z-index: 0;
         outline: none;
-        > span {
+
+        >span {
             pointer-events: none;
         }
+
         span.ripple-hover-effect {
             will-change: transform;
             position: absolute;
@@ -207,6 +218,36 @@ h3 {
             transition: transform 0.6s ease-in-out;
             transform: scale(0);
             background: radial-gradient(transparent 40%, #129ff8 100%);
+        }
+    }
+}
+
+.c-line-hover {
+    margin: 50px 0;
+    text-align: center;
+
+    a.line-hover-btn {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            left: 0;
+            bottom: -3px;
+            background: currentColor;
+            transform: scale(1, 1);
+            transform-origin: left center;
+            transition: transform .2s ease-in-out;
+            pointer-events: none;
+        }
+
+        &:hover::after {
+            transform: scale(0, 1);
         }
     }
 }
@@ -249,11 +290,12 @@ h3 {
     }
 
     .gradient-hover-bordered {
-        background: linear-gradient(to right, transparent, transparent 40%, #D58778  80%);
+        background: linear-gradient(to right, transparent, transparent 40%, #D58778 80%);
         background-size: 300%;
         transition: background-position 550ms ease-in, color 555ms ease-in, border 555ms ease-in;
-    
+
         background-position: left;
+
         &:hover {
             background-position: right;
             color: #000;
@@ -263,51 +305,56 @@ h3 {
 
     a.gradient-hover-btn {
         background: #EBBAA3;
-        background: linear-gradient(to right, #EBBAA3, #EBBAA3 40%, #D58778  80%);
+        background: linear-gradient(to right, #EBBAA3, #EBBAA3 40%, #D58778 80%);
         background-size: 300%;
         transition: background-position 550ms ease-in, color 555ms ease-in;
-    
+
         background-position: left;
+
         &:hover {
             background-position: right;
             color: #fff;
         }
     }
-    
+
     a.gradient-hover-btn-one {
         background: #EBBAA3;
-        background: linear-gradient(to right, #EBBAA3, #EBBAA3 20%, #D58778  80%);
+        background: linear-gradient(to right, #EBBAA3, #EBBAA3 20%, #D58778 80%);
         background-size: 500%;
         transition: background-position 550ms ease-in-out, color 555ms ease-in;
-    
+
         background-position: left;
+
         &:hover {
             background-position: right;
             color: #fff;
         }
-        
+
     }
-    
+
     a.gradient-hover-btn-two {
         background: #EBBAA3;
-        background: linear-gradient( to right, #EBBAA3,  #D58778, #EBBAA3 );
+        background: linear-gradient(to right, #EBBAA3, #D58778, #EBBAA3);
         background-size: 3000%;
         transition: background-position 550ms ease-in, color 555ms ease-in;
-    
+
         background-position: left;
+
         &:hover {
             background-position: right;
             color: #fff;
         }
-        
+
     }
+
     a.gradient-hover-btn-three {
         background: #EBBAA3;
         background: linear-gradient(to right, #EBBAA3, #EBBAA3 20%, #D58778 50%, #EBBAA3 80%);
         background-size: 600%;
         transition: background-position 1250ms ease-in-out, color 1250ms ease-in;
-    
+
         background-position: left;
+
         &:hover {
             background-position: right;
             color: #fff;
@@ -315,17 +362,65 @@ h3 {
     }
 }
 
+.c-arrow-down {
+    padding: 100px 20px;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 500px;
+
+    .m-arrow-down {
+        margin: 0 auto;
+        font-size: 25px;
+        text-align: center;
+        // width: 100%;
+        // max-width: 50px;
+        border-radius: 30px;
+        height: 40px;
+        width: 40px;
+        color: #222;
+        display: block;
+        line-height: 40px;
+        outline: none;
+        border: none;
+        overflow: hidden;
+
+        span {
+            display: block;
+            animation: 1.5s infinite arrowin;
+        }
+    }
+
+    @keyframes arrowin {
+        0% {
+            transform: translateY(-100%)
+        }
+
+        50% {
+            transform: translateY(0)
+        }
+
+        100% {
+            transform: translateY(100%)
+        }
+    }
+}
+
+
 .droplets {
     text-align: center;
     position: relative;
     margin: 50px;
+
     svg {
         overflow: visible;
     }
+
     .circles {
         filter: url("#circle-gooey");
         -webkit-filter: url("#circle-gooey");
     }
+
     .droplets {
         font-size: 38px;
         fill: #fff;
@@ -338,6 +433,7 @@ h3 {
     padding-left: 1.5em;
     margin-bottom: 0.125rem;
     overflow: hidden;
+
     .svg-radio {
         position: relative;
         display: inline-block;
@@ -349,6 +445,7 @@ h3 {
         &:hover .main-circ {
             transform: scale(0.9);
         }
+
         svg {
             overflow: visible;
             pointer-events: none;
@@ -358,23 +455,28 @@ h3 {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+
             .top-circles {
                 filter: url("#check-gooey");
                 -webkit-filter: url("#check-gooey");
+
                 circle {
                     transform-origin: center;
                     transform: translateY(-135%);
                     will-change: transform;
                 }
             }
+
             .main-circ {
                 transform-origin: center;
                 transition: transform 0.5s ease;
                 transform: scale(1);
             }
+
             .scale-second-circ {
                 animation: animateSecond 1s 0.5s ease forwards;
             }
+
             .scale-third-circ {
                 animation: animateThird 1.4s 0.7s ease forwards;
             }
@@ -384,6 +486,7 @@ h3 {
                     transform: translateY(0%);
                 }
             }
+
             @keyframes animateThird {
                 to {
                     transform: translateY(0%);
@@ -391,6 +494,7 @@ h3 {
             }
         }
     }
+
     .check-input.radio {
         width: inherit;
         height: inherit;
@@ -411,10 +515,12 @@ h3 {
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
     .form-check-input:checked {
         // /* background-color: #0d6efd; */
         // border-color: #0d6efd;
     }
+
     .check-active.radio {
         display: flex;
         align-items: center;
@@ -428,9 +534,11 @@ h3 {
             transition: background-color 0.4s ease-in-out;
         }
     }
+
     .check-input.radio {
         border-radius: 50%;
     }
+
     label {
         display: inline-block;
         font-size: 1.5rem;
@@ -438,20 +546,67 @@ h3 {
     }
 }
 
+.c-input-hover {
+    margin-left: 50px;
+    .flex-radio {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        input {
+            position: absolute;
+            border-radius: 50%;
+            /* outline: none; */
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            -webkit-appearance: none;
+        }
+//         input:focus{
+//             outline: none;
+//         }
+//         input:focus,
+//   input:active {
+//    box-shadow: none !important;
+//    -moz-box-shadow: none !important;
+//    -webkit-box-shadow: none !important;
+//    outline: none !important;
+//  }
+
+    }
+    svg {
+        width: 100%;
+        circle {
+            stroke: #222222;
+            stroke-width: 1px;
+            fill: transparent;
+            stroke-dasharray: 82;
+            stroke-dashoffset: 0;
+        }
+    }
+}
+
+
 // *** NIGHT DAY TOGGLE ***
 
 .c-night-day {
     margin: 5rem 0;
+
     .toggle-night-day {
         display: inline-flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+
         p {
             margin-bottom: 3px;
             font-size: 30px;
             margin-bottom: 10px;
         }
     }
+
     .switch {
         position: relative;
         display: block;
@@ -467,6 +622,7 @@ h3 {
         cursor: pointer;
         box-sizing: content-box;
     }
+
     .switch-input {
         position: absolute;
         top: 0;
@@ -475,11 +631,13 @@ h3 {
         box-sizing: content-box;
         width: 100%;
         height: 100%;
-        &:checked ~ .switch-handle {
+
+        &:checked~.switch-handle {
             transform: translateX(200%);
             box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.6), inset 0px 0.5 rgba(255, 255, 255, 0.2);
         }
     }
+
     // .switch-input:checked ~ .switch-label {
     //     background: #f6ae55;
     // }
@@ -498,6 +656,7 @@ h3 {
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), inset 0 0 7px rgba(0, 0, 0, 0.5);
         box-sizing: content-box;
     }
+
     .switch-background {
         display: block;
         height: inherit;
@@ -511,8 +670,8 @@ h3 {
         pointer-events: none;
         transition: background-position 2s ease;
     }
-   
-    
+
+
     .switch-handle {
         position: absolute;
         top: 9.5px;
@@ -522,6 +681,7 @@ h3 {
         background-image: -webkit-linear-gradient(top, #545454 40%, #191919);
         border-radius: 100%;
         box-shadow: -4px 5px 5px rgba(0, 0, 0, 0.2);
+
         &::before {
             content: "";
             position: absolute;
@@ -537,6 +697,7 @@ h3 {
                 0px -0.5px rgba(255, 255, 255, 0.07);
         }
     }
+
     .switch-handle,
     .switch-label {
         transition: transform 0.6s ease-out;
@@ -544,51 +705,82 @@ h3 {
         -moz-transition: transform 0.6s ease-out;
         -o-transition: transform 0.6s ease-out;
     }
+
     #sun-highlight-balls {
         circle {
-            transform: translate(0,0);
+            transform: translate(0, 0);
             transition: transform 1s ease, opacity 1s ease;
         }
     }
-    #moon, #sun {
+
+    #moon,
+    #sun {
         will-change: transform;
     }
+
     .night-star {
         opacity: 0;
         transform: scaleX(0);
         transform-origin: center;
     }
+
     .day-star-big {
         transform-origin: 92px 288px;
         opacity: 0;
     }
+
     .day-star {
         opacity: 0;
         transform-origin: 399px 165px;
     }
+
     .twinkle {
         transform-origin: center;
         animation: twinkle 2.8s ease infinite forwards;
-    }   
-    @keyframes twinkle {
-        0% { transform: scale(0); opacity: 0; }
-        80%   { transform: scale(1); opacity: 1; }
-        100%   { transform: scale(0); opacity: 0; }
     }
+
+    @keyframes twinkle {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        80% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+
     .twinkle-day {
         animation: twinkleDay .9s ease infinite alternate;
     }
+
     @keyframes twinkleDay {
-        0% { transform: scale(1); opacity: 1; }
-        100%   { transform: scale(.2); opacity: .2; }
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(.2);
+            opacity: .2;
+        }
     }
-} // *** end NIGHT DAY TOGGLE ***
+}
+
+// *** end NIGHT DAY TOGGLE ***
 
 // *** TRAINT SMOKE ***
 .smoke-stack {
     height: 500px;
     text-align: center;
     position: relative;
+
     svg {
         position: absolute;
         bottom: 0;
@@ -596,9 +788,11 @@ h3 {
         overflow: visible;
         width: 50%;
     }
+
     .smoke {
         transform-origin: 355.5px 17px;
     }
+
     .rear_wheel {
         transform-origin: 113.1px 304.2px;
     }
@@ -618,12 +812,14 @@ h3 {
         margin: 1rem auto;
         font-weight: 600;
     }
+
     .rotate {
         width: 200px;
         margin: 10px 15px;
         position: relative;
         height: 20px;
         margin: 0 auto;
+
         div {
             border-radius: 50%;
             background: black;
@@ -637,11 +833,13 @@ h3 {
     text-align: center;
     position: relative;
     margin: 50px 0;
+
     .content {
         overflow: hidden;
         padding: 10px 0;
         margin: 0 10px;
     }
+
     button.c-roll-btn {
         font-size: 30px;
         // padding: 10px 15px;
@@ -654,8 +852,10 @@ h3 {
         svg {
             overflow: visible;
         }
+
         .roll-btn-text {
             line-height: 27px;
+
             // padding: 0px 10px;
             span {
                 display: inline-block;
@@ -678,6 +878,7 @@ h3 {
         filter: url("#circle-gooey");
         filter: url("#rect-gooey");
     }
+
     .drip {
         animation: easeOutBounce 4s;
     }
@@ -691,6 +892,7 @@ h3 {
         0% {
             transform: translateX(0);
         }
+
         100% {
             transform: translateX(20px);
         }
@@ -700,33 +902,40 @@ h3 {
 .for-product-loading {
     margin: 5rem 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
     button.c-loader-spin {
         // width = height * 2.69
         width: 135px;
         height: 50px;
         border: none;
-        margin: 0 auto;
+        margin: 0 5px;
         padding: 0;
         background: #1A4124;
         border-radius: 5px;
     }
+
     .innerText {
         pointer-events: none;
     }
+
     svg {
         width: 100%;
         height: 100%;
+
         circle {
             // filter: url(#fancy-goo);
             // -webkit-filter: url(#fancy-goo);
             transform: translate(50%, 50%)
         }
+
         circle.first {
-            
+
             transform: translate(50%, 50%); // half size of the r
         }
+
         circle.second {
-            transform: translate(50%, 50%); 
+            transform: translate(50%, 50%);
         }
     }
 }

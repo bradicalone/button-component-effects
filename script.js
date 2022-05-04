@@ -970,4 +970,10 @@ window.onload = function () {
     loadingOne()
     rollOffText()
     gooeySpin(document.getElementsByClassName('c-loader-spin'))
+
+
+    var path = document.querySelector('.flex-radio circle');
+    console.log('path :', path )
+var length = path.getTotalLength();
+console.log('length:', length)
 }

@@ -225,6 +225,36 @@ h3 {
   background: radial-gradient(transparent 40%, #129ff8 100%);
 }
 
+.c-line-hover {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.c-line-hover a.line-hover-btn {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.c-line-hover a.line-hover-btn::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: -3px;
+  background: currentColor;
+  transform: scale(1, 1);
+  transform-origin: left center;
+  transition: transform .2s ease-in-out;
+  pointer-events: none;
+}
+
+.c-line-hover a.line-hover-btn:hover::after {
+  transform: scale(0, 1);
+}
+
 .c-gradient-hover {
   text-align: center;
   position: relative;
@@ -326,6 +356,46 @@ h3 {
 .c-gradient-hover a.gradient-hover-btn-three:hover {
   background-position: right;
   color: #fff;
+}
+
+.c-arrow-down {
+  padding: 100px 20px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.c-arrow-down .m-arrow-down {
+  margin: 0 auto;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 30px;
+  height: 40px;
+  width: 40px;
+  color: #222;
+  display: block;
+  line-height: 40px;
+  outline: none;
+  border: none;
+  overflow: hidden;
+}
+
+.c-arrow-down .m-arrow-down span {
+  display: block;
+  animation: 1.5s infinite arrowin;
+}
+
+@keyframes arrowin {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
 .droplets {
@@ -462,6 +532,41 @@ h3 {
   margin-left: 1.5rem;
 }
 
+.c-input-hover {
+  margin-left: 50px;
+}
+
+.c-input-hover .flex-radio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.c-input-hover .flex-radio input {
+  position: absolute;
+  border-radius: 50%;
+  /* outline: none; */
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  -webkit-appearance: none;
+}
+
+.c-input-hover svg {
+  width: 100%;
+}
+
+.c-input-hover svg circle {
+  stroke: #222222;
+  stroke-width: 1px;
+  fill: transparent;
+  stroke-dasharray: 82;
+  stroke-dashoffset: 0;
+}
+
 .c-night-day {
   margin: 5rem 0;
 }
@@ -470,6 +575,7 @@ h3 {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .c-night-day .toggle-night-day p {
@@ -573,7 +679,8 @@ h3 {
   transition: transform 1s ease, opacity 1s ease;
 }
 
-.c-night-day #moon, .c-night-day #sun {
+.c-night-day #moon,
+.c-night-day #sun {
   will-change: transform;
 }
 
@@ -749,13 +856,15 @@ h3 {
 .for-product-loading {
   margin: 5rem 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .for-product-loading button.c-loader-spin {
   width: 135px;
   height: 50px;
   border: none;
-  margin: 0 auto;
+  margin: 0 5px;
   padding: 0;
   background: #1A4124;
   border-radius: 5px;
