@@ -555,6 +555,10 @@ h3 {
   -webkit-appearance: none;
 }
 
+.c-input-hover .flex-radio input:hover ~ svg circle {
+  stroke-dashoffset: 0;
+}
+
 .c-input-hover svg {
   width: 100%;
 }
@@ -563,8 +567,9 @@ h3 {
   stroke: #222222;
   stroke-width: 1px;
   fill: transparent;
+  transition: stroke-dashoffset .7s ease-in-out;
   stroke-dasharray: 82;
-  stroke-dashoffset: 0;
+  stroke-dashoffset: 82;
 }
 
 .c-night-day {

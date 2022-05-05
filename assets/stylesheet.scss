@@ -563,18 +563,10 @@ h3 {
             height: 20px;
             background-color: blue;
             -webkit-appearance: none;
+            &:hover ~ svg circle {
+                stroke-dashoffset: 0;
+            }
         }
-//         input:focus{
-//             outline: none;
-//         }
-//         input:focus,
-//   input:active {
-//    box-shadow: none !important;
-//    -moz-box-shadow: none !important;
-//    -webkit-box-shadow: none !important;
-//    outline: none !important;
-//  }
-
     }
     svg {
         width: 100%;
@@ -582,8 +574,9 @@ h3 {
             stroke: #222222;
             stroke-width: 1px;
             fill: transparent;
+            transition: stroke-dashoffset .7s ease-in-out;
             stroke-dasharray: 82;
-            stroke-dashoffset: 0;
+            stroke-dashoffset:82;
         }
     }
 }
