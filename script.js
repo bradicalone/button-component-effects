@@ -719,6 +719,95 @@ function loadingOne() {
     }
 }
 
+function Loading(items) {
+    const button = document.querySelector('.show-circles.is-loading')
+    const text = button.getElementsByTagName('span')[0]
+    const buttonWidth = button.getBoundingClientRect().width // 👈  The size of circles you want, change to hard coded value if needed, current is text height
+    const textHeight = text.getBoundingClientRect().height
+    const fragment = document.createDocumentFragment();
+    
+    let circles = [], container;
+    let circleWidth = textHeight         
+    let start = 0
+    let animateId;
+   
+
+    // const upDown = (startX, distance, progress) =>  (startX +  (distance * Math.sin(progress * (Math.PI * 2)))).toFixed(3)
+    const scaleEase = (startX, distance, progress) =>  (startX +  (distance * Math.cos(progress * (Math.PI  * 2)))).toFixed(3)
+    const rubberBand = (startX, distance, progress) =>  (startX + (distance * Math.sin(progress * (Math.PI * 2))))
+
+    const loading = {
+        // 2nd Gets Elements inplace and ready (Also helps for animaton rendering)
+        placeCircles: function () {
+            text.style.display = 'none'
+            container.style.display = 'block'
+            button.appendChild(fragment)
+
+            setTimeout(function () {
+                container.style.display = 'none'
+                text.style.display = 'block'
+                cancelAnimationFrame(animateId)  // 👈  timeout to stop animation and remove if needed
+            }, 5000)
+        },
+        // 3rd animates circles
+        rotateCircles: function (timestamp) {
+            let index = circles.length
+            if (!start) start = timestamp
+
+            const progress = Math.min((timestamp - start) / 2500, 1)
+
+            while(index--) {
+                const {el, x_start, x_offset, x_dist} = circles[index]
+                const x =  rubberBand(x_start, x_dist, progress + x_offset);
+                const y =  scaleEase(-3 , 6, progress + x_offset);
+                const scale = scaleEase(1, .5, progress + x_offset);
+                const opacity = scaleEase(.8, .3, progress + x_offset)
+                el.style.opacity = opacity
+                el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${-scale})`
+            }
+            
+            if (progress < 1) {
+                animateId = requestAnimationFrame(loading.rotateCircles)
+            } 
+            else {
+                start = 0
+                requestAnimationFrame(loading.rotateCircles)
+            }
+        },
+        // 1st Creates the elements and adds necessary styles on page load (Helps with animation rendering)
+        createFragment: function () {
+            container = document.createElement('div')
+            container.className = 'rotate'
+
+            for (let i = 1; i <= items; i++) {
+                const circle = container.appendChild(document.createElement('div'));
+                circle.style.width = circleWidth + 'px'
+                circle.style.height = circleWidth + 'px'
+
+                const x_offset = i / 5
+
+                circles.push({
+                    el: circle,
+                    x_offset: x_offset,
+                    y_offset: 0,
+                    x_start: buttonWidth / 2 - circleWidth,
+                    x_dist: buttonWidth / 2 - circleWidth
+                })
+            }
+            fragment.appendChild(container)
+            container.style.width = '100%'
+            container.style.height = circleWidth + 'px'
+        }
+    }
+    loading.createFragment()
+
+    // User clicks to start loading animation
+    button.onclick = function () {
+        loading.placeCircles()
+        requestAnimationFrame(loading.rotateCircles)
+    }
+}
+
 const rollOffText = function () {
     const path = document.getElementsByClassName('roll-line')[0]
     const svg = document.getElementById('roll-text')
@@ -968,12 +1057,13 @@ window.onload = function () {
     new NightDay()
     // smokeTrail() // Train
     loadingOne()
-    rollOffText()
+    const loadingTwo = new Loading(5)
+    // rollOffText()
     gooeySpin(document.getElementsByClassName('c-loader-spin'))
 
 
-    var path = document.querySelector('.flex-radio circle');
-    console.log('path :', path )
-var length = path.getTotalLength();
-console.log('length:', length)
+    const path = document.querySelector('.flex-radio circle');
+    const length = path.getTotalLength();
+
+    
 }

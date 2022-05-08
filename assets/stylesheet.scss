@@ -822,6 +822,40 @@ h3 {
     }
 }
 
+.loading-two {
+    .is-loading {
+        padding: 12px;
+        width: 200px;
+        border-radius: 40px;
+        background: 0;
+        border: 2px solid #ffb063;
+        font-size: 21px;
+        transition: all 0.2s ease-out;
+        cursor: pointer;
+        color: #ffb063;
+        display: block;
+        margin: 1rem auto;
+        font-weight: 600;
+    }
+
+    .rotate {
+        width: 200px;
+        // margin: 5px 5px;
+        margin: 0 auto;
+        position: relative;
+        height: 20px;
+        margin: 0 auto;
+
+        div {
+            border-radius: 50%;
+            background: black;
+            position: absolute;
+            left: 0;
+            will-change: transform;
+        }
+    }
+}
+
 .c-roll-off {
     text-align: center;
     position: relative;
