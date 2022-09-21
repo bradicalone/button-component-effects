@@ -139,6 +139,73 @@ h3 {
     }
 }
 
+.c_input-rotate {
+    width: 215px;
+    height: 40px;
+    position: relative;
+    margin: 0 auto;
+
+    .c_input-elements {
+        color: #D58778;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+    }
+
+    .c_input-wrap {
+        position: relative;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+        overflow: hidden;
+        span {
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: translateY(-100%) translateY(-18px);
+        }
+    }
+
+    .c_input {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+        padding: 19px 5px 5px;
+        border: none;
+        border-bottom: 1px solid;
+        font-size: inherit;
+    }
+
+    .rotate_controls {
+        display: inline-block;
+        position: absolute;
+        right: 2px;
+        bottom: 1px;
+        width: 28px;
+        height: 28px;
+        z-index: 3;
+
+        svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        path,
+        circle {
+            pointer-events: none;
+        }
+    }
+
+}
+
 .c-ripple-click {
     text-align: center;
     position: relative;
@@ -548,6 +615,7 @@ h3 {
 
 .c-input-hover {
     margin-left: 50px;
+
     .flex-radio {
         position: relative;
         display: flex;
@@ -555,6 +623,7 @@ h3 {
         justify-content: center;
         width: 35px;
         height: 35px;
+
         input {
             position: absolute;
             border-radius: 50%;
@@ -563,20 +632,23 @@ h3 {
             height: 20px;
             background-color: blue;
             -webkit-appearance: none;
-            &:hover ~ svg circle {
+
+            &:hover~svg circle {
                 stroke-dashoffset: 0;
             }
         }
     }
+
     svg {
         width: 100%;
+
         circle {
             stroke: #222222;
             stroke-width: 1px;
             fill: transparent;
             transition: stroke-dashoffset .7s ease-in-out;
             stroke-dasharray: 82;
-            stroke-dashoffset:82;
+            stroke-dashoffset: 82;
         }
     }
 }
@@ -931,6 +1003,7 @@ h3 {
     text-align: center;
     display: flex;
     justify-content: center;
+
     button.c-loader-spin {
         // width = height * 2.69
         width: 135px;
@@ -964,5 +1037,58 @@ h3 {
         circle.second {
             transform: translate(50%, 50%);
         }
+    }
+}
+
+.lightning {
+    margin-bottom: 200px;
+    display: flex;
+    justify-content: center;
+
+    #bolt {
+        transform: translate(0, 0%);
+    }
+    #base {
+        opacity: 0;
+    }
+    g {
+        transform: translate(0, 10%) scale(0);
+        transform-origin: center bottom;
+        opacity: 1;
+    }
+    #left_bolt {
+
+    }
+    .animateSpark {
+        animation: .35s ease-out forwards move_sparks;
+    }
+
+    @keyframes move_sparks {
+        0% {
+            transform: translate(0, 10%) scale(0);
+            opacity: 1;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(0, 2%) scale(1.1);
+            opacity: 0;
+        }
+        
+      }
+}
+
+.LetterAnimate {
+    padding: 75px 75px;
+    svg {
+        visibility: visible;
+    }
+    .LetterAnimate_path {
+        stroke-width: 20; 
+    }
+    path {
+        stroke-linecap: round;
+        stroke-linejoin: round
     }
 }

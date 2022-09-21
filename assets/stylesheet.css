@@ -142,6 +142,73 @@ h3 {
   transform: rotateX(360deg) translateZ(15px);
 }
 
+.c_input-rotate {
+  width: 215px;
+  height: 40px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.c_input-rotate .c_input-elements {
+  color: #D58778;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.c_input-rotate .c_input-wrap {
+  position: relative;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.c_input-rotate .c_input-wrap span {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(-100%) translateY(-18px);
+}
+
+.c_input-rotate .c_input {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 19px 5px 5px;
+  border: none;
+  border-bottom: 1px solid;
+  font-size: inherit;
+}
+
+.c_input-rotate .rotate_controls {
+  display: inline-block;
+  position: absolute;
+  right: 2px;
+  bottom: 1px;
+  width: 28px;
+  height: 28px;
+  z-index: 3;
+}
+
+.c_input-rotate .rotate_controls svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.c_input-rotate .rotate_controls path,
+.c_input-rotate .rotate_controls circle {
+  pointer-events: none;
+}
+
 .c-ripple-click {
   text-align: center;
   position: relative;
@@ -925,4 +992,59 @@ h3 {
 
 .for-product-loading svg circle.second {
   transform: translate(50%, 50%);
+}
+
+.lightning {
+  margin-bottom: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.lightning #bolt {
+  transform: translate(0, 0%);
+}
+
+.lightning #base {
+  opacity: 0;
+}
+
+.lightning g {
+  transform: translate(0, 10%) scale(0);
+  transform-origin: center bottom;
+  opacity: 1;
+}
+
+.lightning .animateSpark {
+  animation: .35s ease-out forwards move_sparks;
+}
+
+@keyframes move_sparks {
+  0% {
+    transform: translate(0, 10%) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 2%) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.LetterAnimate {
+  padding: 75px 75px;
+}
+
+.LetterAnimate svg {
+  visibility: visible;
+}
+
+.LetterAnimate .LetterAnimate_path {
+  stroke-width: 20;
+}
+
+.LetterAnimate path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

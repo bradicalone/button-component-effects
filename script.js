@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 
 function gradientEffect() {
@@ -33,21 +34,88 @@ function wordSpin() {
     let start, reqID, startDist = 0, dist = 360, deg = 0;
 
     function animate(timestamp) {
-        if(!start) start = timestamp
+        if (!start) start = timestamp
         const progress = Math.min((timestamp - start) / 3000, 1)
         deg = startDist + (progress * dist)
 
         btn.style.transform = `rotateX(${deg}deg)`
-        if(progress == 1) start = 0 
-        
-        reqID = requestAnimationFrame(animate) 
+        if (progress == 1) start = 0
+
+        reqID = requestAnimationFrame(animate)
     }
 
-    btn.onmouseenter = (e) =>  reqID = requestAnimationFrame(animate)
+    btn.onmouseenter = (e) => reqID = requestAnimationFrame(animate)
     btn.onmouseleave = (e) => {
         cancelAnimationFrame(reqID)
         startDist = deg
         start = 0
+    }
+}
+
+function inputRotate() {
+    const buttonsContainer = document.querySelector('.rotate_controls')
+    const slogans = Array.from(document.querySelectorAll('.c_input-wrap span'))
+    const components = document.querySelectorAll('.c_input-wrap, .rotate_controls')
+    let startPos = slogans.length - 1
+    let intervalID, hiddenElement;
+    let dist = 0;
+    let duration = 1000
+    let rotation = 0
+
+    const rotate = () => {
+        slogans[startPos].style.transition = 'transform .8s ease-out'
+        slogans[startPos].style.transform = `translateY(${dist}%)`
+
+        // Previous element
+        if (dist == 100) {
+            slogans[startPos - 1].style.transition = 'transform .8s ease-out'
+            slogans[startPos - 1].style.transform = `translateY(${dist - 100}%)`
+        }
+        // When transformed below add element to begining of array
+        if (dist === 200) {
+            const lastItem = slogans.pop()
+            lastItem.style.transition = 'none'
+            lastItem.style.transform = null
+            slogans.unshift(lastItem)
+            dist = 0
+        }
+
+        dist += 100
+        rotation++
+    }
+
+
+    const init = () => {
+        rotate()
+        return () => intervalID = setInterval(() => {
+            if (rotation++ >= 3) rotate()
+        }, duration);
+    }
+    const startRotate = init()
+    startRotate()
+
+    buttonsContainer.onclick = e => {
+        const id = e.target.id
+
+        if (id == 'c_input-pause') {
+            clearInterval(intervalID)
+            e.target.style.display = 'none'
+            if (hiddenElement) hiddenElement.style.display = 'block'
+            return hiddenElement = e.target
+        }
+
+        startRotate()
+        console.log(hiddenElement)
+        e.target.style.display = 'none'
+        hiddenElement.style.display = 'block'
+        hiddenElement = e.target
+
+    }
+    document.getElementsByClassName('c_input')[0].onclick = (e) => {
+        console.log('e:', e.target)
+        components[0].style.display = 'none'
+        components[1].style.display = 'none'
+        clearInterval(intervalID)
     }
 }
 
@@ -725,16 +793,16 @@ function Loading(items) {
     const buttonWidth = button.getBoundingClientRect().width // 👈  The size of circles you want, change to hard coded value if needed, current is text height
     const textHeight = text.getBoundingClientRect().height
     const fragment = document.createDocumentFragment();
-    
+
     let circles = [], container;
-    let circleWidth = textHeight         
+    let circleWidth = textHeight
     let start = 0
     let animateId;
-   
+
 
     // const upDown = (startX, distance, progress) =>  (startX +  (distance * Math.sin(progress * (Math.PI * 2)))).toFixed(3)
-    const scaleEase = (startX, distance, progress) =>  (startX +  (distance * Math.cos(progress * (Math.PI  * 2)))).toFixed(3)
-    const rubberBand = (startX, distance, progress) =>  (startX + (distance * Math.sin(progress * (Math.PI * 2))))
+    const scaleEase = (startX, distance, progress) => (startX + (distance * Math.cos(progress * (Math.PI * 2)))).toFixed(3)
+    const rubberBand = (startX, distance, progress) => (startX + (distance * Math.sin(progress * (Math.PI * 2))))
 
     const loading = {
         // 2nd Gets Elements inplace and ready (Also helps for animaton rendering)
@@ -756,19 +824,19 @@ function Loading(items) {
 
             const progress = Math.min((timestamp - start) / 2500, 1)
 
-            while(index--) {
-                const {el, x_start, x_offset, x_dist} = circles[index]
-                const x =  rubberBand(x_start, x_dist, progress + x_offset);
-                const y =  scaleEase(-3 , 6, progress + x_offset);
+            while (index--) {
+                const { el, x_start, x_offset, x_dist } = circles[index]
+                const x = rubberBand(x_start, x_dist, progress + x_offset);
+                const y = scaleEase(-3, 6, progress + x_offset);
                 const scale = scaleEase(1, .5, progress + x_offset);
                 const opacity = scaleEase(.8, .3, progress + x_offset)
                 el.style.opacity = opacity
                 el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${-scale})`
             }
-            
+
             if (progress < 1) {
                 animateId = requestAnimationFrame(loading.rotateCircles)
-            } 
+            }
             else {
                 start = 0
                 requestAnimationFrame(loading.rotateCircles)
@@ -840,7 +908,7 @@ const rollOffText = function () {
         console.log(letterData)
     }
     loadLetters()
-    
+
     let steps = [{
         leftHandle: {
             x: 0,
@@ -891,7 +959,7 @@ const rollOffText = function () {
         if (step == 1) path.style.transform = `translate3d(${dist}px, 0, 0)`
         const { x, y } = path.getPointAtLength(131);
         // console.log('x:', path.style.transform)
-        if(dist > 30 && step == 1) return
+        if (dist > 30 && step == 1) return
 
         const values = Object.keys(steps[step]).map((key, i) => {
             let l = steps[step]['leftHandle']
@@ -1047,10 +1115,204 @@ function gooeySpin(btns) {          // 👈  buttons
     })
 }
 
+function Lightning() {
+    const elements = document.querySelector('.Lightning g')
+    const bolt = document.getElementById('bolt')
+    const base = document.getElementById('base')
+    let intersected = false, hasAnimated;
+
+    const easeOutElastic = progress =>
+        Math.pow(2, -5 * progress) * Math.sin((progress - .1) * 5 * Math.PI) + 1;
+
+    const time = {
+        start: performance.now(),
+        total: 1000,
+    }
+    let start = 0
+    const tick = now => {
+        // time.elapsed = now - time.start;
+        // const progress = time.elapsed / time.total;
+        if (!start) start = now
+        const elapsed = now - start;
+        const progress = elapsed / time.total;
+        const spark = Math.min(easeOutElastic(progress), 1)
+        if (spark === 1) {
+            intersected = true
+            hasAnimated = true
+        } else {
+            intersected = false
+            hasAnimated = true
+        }
+
+        if (intersected && hasAnimated) {
+            elements.setAttribute('class', 'animateSpark');
+
+        } else if (!intersected && hasAnimated) {
+            elements.removeAttribute('class');
+        }
+
+        hasAnimated = false
+
+        const baseOpac = 1 * easeOutElastic(progress)
+
+        const value = -40 + (40 * easeOutElastic(progress));
+
+        bolt.style.transform = `translate(0, ${value}%)`;
+        // base.style.opacity = baseOpac
+        if (progress < 1) {
+            requestAnimationFrame(tick);
+        }
+    };
+
+    requestAnimationFrame(tick);
+    let i = elements.length
+    while (i--) {
+
+    }
+}
+
+function letterAnimate() {
+    const canvas = document.getElementById('LetterAnimate')
+    const Y = canvas.getBBox().height
+    const items = 42
+    const fontWeight = 30
+
+    const letterPaths = Array.from(document.querySelectorAll('.LetterAnimate path'))
+    console.log('letterPaths:', letterPaths)
+
+    console.log('Y:', Y)
+    const { width, height } = canvas.getBBox()
+    console.log('height:', height)
+
+    const pathLengths = letterPaths.map(path => Math.round(path.getTotalLength()))
+    console.log('pathLengths:', pathLengths)
+
+
+    const spacingY = Y / (items * 2) 
+    console.log('spacingY:', spacingY)
+
+    const points = {
+        fontWeight,
+        startX: -fontWeight,
+        startY: Y - (spacingY / 2),
+        width: width,
+        stroke: spacingY,
+    }
+    console.log('points:', points)
+
+
+    const createPos = (letterPaths) => {
+
+        let posArray = []
+        let pathDistance = 0
+        let section = 0
+        const createSections = (letterPaths) => {
+            const letterPath = letterPaths[section]
+
+            let iteration = 0
+            let length = letterPath.getTotalLength() 
+            console.log('length:', length)
+            let yIncrement = letterPath.getPointAtLength(0).y
+            console.log('yIncrement:', yIncrement)
+            const count = section === 0 ? items : length
+            while (pathDistance < length) {
+
+                const { x, y } = letterPath.getPointAtLength(pathDistance)
+                    if (section === 0) {
+                            posArray = [...posArray,
+                                /* Left of letter */
+                            [{
+                                x: -points.fontWeight, // This could be a math random 
+                                y: y,
+                                length: x 
+                            },
+                            /* First path font size of the letter */
+                            {
+                                x: x - (points.fontWeight) / 2, // This could be a math random 
+                                y: y,
+                                length: points.fontWeight 
+                            }]
+                        ]
+                    } else if (section === 1) {
+                        if(iteration > items) break;
+
+                        const prevItems = posArray[iteration][1] 
+                        if(y <= prevItems.y + .2 ) {
+                            
+                            posArray[iteration].push(
+                                /* Middle of letter */
+                                {
+                                    x: prevItems.x  + points.fontWeight * 1.5,
+                                    y: prevItems.y,
+                                    length: x - (prevItems.x + points.fontWeight * 2.5)
+                                },
+                                /* Second path font size of the letter */
+                                {
+                                    x: x - (points.fontWeight) / 2, // This could be a math random 
+                                    y: y,
+                                    length: points.fontWeight 
+                                },
+                                /* Right side of letter */
+                                {
+                                    x: x + points.fontWeight,
+                                    y: prevItems.y,
+                                    length: (prevItems.x + prevItems.length)
+                                })
+                            
+                             iteration++
+                        }
+                        
+                    }
+                pathDistance += length  / count
+
+            }
+            if (++section < letterPaths.length) {
+                console.log('section:', section)
+                pathDistance = 0
+                createSections(letterPaths)
+            }
+        }
+        // letterPaths.forEach((letterPath, i) => createSections(letterPath, i))
+        createSections(letterPaths)
+        return posArray
+    }
+    const pos = createPos(letterPaths )
+    console.log('pos:', pos)
+
+    const createPath = (x, y, length, stroke, dasharray) => {
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", `m ${x} ${y} l ${length} 0`);
+        path.setAttribute("stroke", "#4d616e");
+        path.setAttribute("stroke-width", stroke);
+        path.setAttribute("fill-opacity", 1);
+        // path.setAttribute("stroke-dasharray", dasharray);
+        return path;
+    };
+
+    const createDashedPath = (count, pos) => {
+
+        const paths = pos.map((item, k) => {
+
+            const {x,y,length } = item
+            const path = createPath(x, y, length, points.stroke)
+            return path
+        })
+        return paths
+    }
+
+    for (let i = 0; i <= items; i++) {
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        canvas.append(g);
+        const path = createDashedPath(1, pos[i])
+        g.append(...path);
+    }
+}
+
 window.onload = function () {
     gradientEffect()
     letterSpin()
     wordSpin()
+    inputRotate()
     rippleHover()
     splatter()
     radioCheckBox()
@@ -1060,10 +1322,10 @@ window.onload = function () {
     const loadingTwo = new Loading(5)
     // rollOffText()
     gooeySpin(document.getElementsByClassName('c-loader-spin'))
-
-
+    Lightning()
+    letterAnimate()
     const path = document.querySelector('.flex-radio circle');
     const length = path.getTotalLength();
 
-    
+
 }
