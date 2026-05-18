@@ -1174,22 +1174,23 @@ function Lightning() {
 function letterAnimate() {
     const canvas = document.getElementById('LetterAnimate')
     const Y = canvas.getBBox().height
+    // const [width, height] = canvas.getAttribute("viewBox").match(/[1-9]\d+/g)
     const items = 42
     const fontWeight = 30
 
     const letterPaths = Array.from(document.querySelectorAll('.LetterAnimate path'))
-    console.log('letterPaths:', letterPaths)
 
-    console.log('Y:', Y)
+
+
     const { width, height } = canvas.getBBox()
-    console.log('height:', height)
+
 
     const pathLengths = letterPaths.map(path => Math.round(path.getTotalLength()))
-    console.log('pathLengths:', pathLengths)
 
 
-    const spacingY = Y / (items * 2) 
-    console.log('spacingY:', spacingY)
+
+    const spacingY = Y / (items * 2)
+
 
     const points = {
         fontWeight,
@@ -1210,64 +1211,62 @@ function letterAnimate() {
             const letterPath = letterPaths[section]
 
             let iteration = 0
-            let length = letterPath.getTotalLength() 
-            console.log('length:', length)
-            let yIncrement = letterPath.getPointAtLength(0).y
-            console.log('yIncrement:', yIncrement)
+            let length = letterPath.getTotalLength()
+
             const count = section === 0 ? items : length
             while (pathDistance < length) {
 
                 const { x, y } = letterPath.getPointAtLength(pathDistance)
-                    if (section === 0) {
-                            posArray = [...posArray,
-                                /* Left of letter */
-                            [{
-                                x: -points.fontWeight, // This could be a math random 
-                                y: y,
-                                length: x 
+                if (section === 0) {
+                    posArray = [...posArray,
+                    /* Left of letter */
+                    [{
+                        x: -points.fontWeight, // This could be a math random 
+                        y: y,
+                        length: x
+                    },
+                    /* First path font size of the letter */
+                    {
+                        x: x - (points.fontWeight) / 2, // This could be a math random 
+                        y: y,
+                        length: points.fontWeight
+                    }]
+                    ]
+                } else if (section === 1) {
+                    if (iteration > items) break;
+
+                    const prevItems = posArray[iteration][1]
+                    if (y <= prevItems.y + .2) {
+                        // if(iteration === 42) console.log(prevItems);
+                        posArray[iteration].push(
+                            /* Middle of letter */
+                            {
+                                x: prevItems.x + points.fontWeight * 1.5,
+                                y: prevItems.y,
+                                length: Math.abs(x - (prevItems.x + points.fontWeight * 2.5))
                             },
-                            /* First path font size of the letter */
+                            /* Second path font size of the letter */
                             {
                                 x: x - (points.fontWeight) / 2, // This could be a math random 
                                 y: y,
-                                length: points.fontWeight 
-                            }]
-                        ]
-                    } else if (section === 1) {
-                        if(iteration > items) break;
+                                length: points.fontWeight
+                            },
+                            /* Right side of letter */
+                            {
+                                x: x + points.fontWeight,
+                                y: prevItems.y,
+                                length: (prevItems.x + prevItems.length)
+                            })
 
-                        const prevItems = posArray[iteration][1] 
-                        if(y <= prevItems.y + .2 ) {
-                            
-                            posArray[iteration].push(
-                                /* Middle of letter */
-                                {
-                                    x: prevItems.x  + points.fontWeight * 1.5,
-                                    y: prevItems.y,
-                                    length: x - (prevItems.x + points.fontWeight * 2.5)
-                                },
-                                /* Second path font size of the letter */
-                                {
-                                    x: x - (points.fontWeight) / 2, // This could be a math random 
-                                    y: y,
-                                    length: points.fontWeight 
-                                },
-                                /* Right side of letter */
-                                {
-                                    x: x + points.fontWeight,
-                                    y: prevItems.y,
-                                    length: (prevItems.x + prevItems.length)
-                                })
-                            
-                             iteration++
-                        }
-                        
+                        iteration++
                     }
-                pathDistance += length  / count
+
+                }
+                pathDistance += length / count
 
             }
             if (++section < letterPaths.length) {
-                console.log('section:', section)
+
                 pathDistance = 0
                 createSections(letterPaths)
             }
@@ -1276,8 +1275,8 @@ function letterAnimate() {
         createSections(letterPaths)
         return posArray
     }
-    const pos = createPos(letterPaths )
-    console.log('pos:', pos)
+    const pos = createPos(letterPaths)
+
 
     const createPath = (x, y, length, stroke, dasharray) => {
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -1293,7 +1292,7 @@ function letterAnimate() {
 
         const paths = pos.map((item, k) => {
 
-            const {x,y,length } = item
+            const { x, y, length } = item
             const path = createPath(x, y, length, points.stroke)
             return path
         })
@@ -1308,7 +1307,62 @@ function letterAnimate() {
     }
 }
 
+const carouselImgs = function () {
+    const items = document.querySelectorAll('.imgRotate-container .item')
+    const prevBtn = document.getElementById('imgRotate-prev')
+    const nextBtn = document.getElementById('imgRotate-next')
+    const total = items.length
+    const radius = 210
+    const step = 360 / total   // 60° per click
+
+    let rotation = 0
+    let target = 0
+    let start = 0
+    let animating = false
+
+    const outCubic = n => 1 - Math.pow(1 - n, 3)
+
+    const setPositions = (r) => {
+        items.forEach((el, i) => {
+            const angle = (i / total) * 360 + r
+            const cos = Math.cos(angle * Math.PI / 180)
+            const scale = 0.4 + 0.6 * ((cos + 1) / 2)  // front: 1.0, back: 0.4
+            el.style.transform = `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${-angle}deg) scale(${scale})`
+        })
+    }
+
+    const animate = (timestamp) => {
+        if (!start) start = timestamp
+        const progress = Math.min((timestamp - start) / 600, 1)
+        const ease = outCubic(progress)
+
+        setPositions(rotation + (target - rotation) * ease)
+
+        if (progress < 1) {
+            requestAnimationFrame(animate)
+        } else {
+            rotation = target
+            animating = false
+        }
+    }
+
+    const go = (dir) => {
+        if (animating) return
+        animating = true
+        start = 0
+        target += step * dir
+        requestAnimationFrame(animate)
+    }
+
+    prevBtn.onclick = () => go(1)
+    nextBtn.onclick = () => go(-1)
+
+    setPositions(0)
+}
+
+
 window.onload = function () {
+    carouselImgs()
     gradientEffect()
     letterSpin()
     wordSpin()
@@ -1317,7 +1371,7 @@ window.onload = function () {
     splatter()
     radioCheckBox()
     new NightDay()
-    // smokeTrail() // Train
+    smokeTrail() // Train
     loadingOne()
     const loadingTwo = new Loading(5)
     // rollOffText()

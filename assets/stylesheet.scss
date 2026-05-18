@@ -500,6 +500,8 @@ h3 {
     padding-left: 1.5em;
     margin-bottom: 0.125rem;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 
     .svg-radio {
         position: relative;
@@ -593,7 +595,7 @@ h3 {
         align-items: center;
         padding: 9px;
         margin: 7px 0;
-
+        width: 300px;
         &:hover {
             background-color: aliceblue;
             border-top-left-radius: 30px;
@@ -852,6 +854,8 @@ h3 {
         left: 0;
         overflow: visible;
         width: 50%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .smoke {
@@ -1085,7 +1089,7 @@ h3 {
         visibility: visible;
     }
     .LetterAnimate_path {
-        stroke-width: 20; 
+        stroke-width: 30; 
     }
     path {
         stroke-linecap: round;

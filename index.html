@@ -69,7 +69,7 @@
     <div class="c-ripple-click">
         <button class="ripple-click-btn">
             <span class="ripple-click-effect"></span>
-            <span>RIPPLE</span>
+            <span>RIPPLE CLICK</span>
         </button>
     </div>
     <hr>
@@ -82,6 +82,61 @@
     <hr>
     <div class="c-line-hover">
         <a class="line-hover-btn">hover line animate</a>
+    </div>
+    <hr>
+    <div class="c-line-path" style="display: flex;flex-direction: column;align-items: center;">
+        <style>
+            /* Same coordinate space as the SVG viewBox */
+            .demo {
+                position: relative;
+                width: 300px;
+                height: 140px;
+
+                /* SVG only draws the guide line */
+                svg {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                path {
+                    fill: none;
+                    stroke: #999;
+                    stroke-width: 2;
+                }
+
+                .circle {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    /* (0,0) aligns with the path space */
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 100%;
+                    background: #1f6658;
+
+                    /* Use the SAME path data as the SVG above */
+                    offset-path: path("M16,120 C80,20 220,20 284,120");
+                    offset-distance: 0%;
+                    offset-rotate: auto;
+                    animation: move 3s ease-in-out infinite alternate;
+                }
+            }
+
+            @keyframes move {
+                to {
+                    offset-distance: 100%;
+                }
+            }
+        </style>
+        <p>Animate SVG Path</p>
+        <div class="demo">
+            <svg viewBox="0 0 300 140" aria-hidden="true">
+                <path d="M16,120 C80,20 220,20 284,120" />
+            </svg>
+            <div class="circle"></div>
+        </div>
     </div>
     <hr>
     <div class="c-gradient-hover">
@@ -116,6 +171,8 @@
     <div class="droplets">
         <svg viewBox="0 0 200 75" class="splash" width="200" height="75" xmlns="http:www.w3.org/2000/svg">
             <g class="circles">
+                <path d="m 0.39998626708984375 103 l 500 0" stroke-dasharray="460.72431127482355,12,27.27568872517645"
+                    stroke="#4c4646" stroke-width="12"></path>
                 <rect x="0" y="0" width="200" height="75" fill="#ee786e" />
             </g>
             <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="droplets">Droplets</text>
@@ -137,7 +194,7 @@
         <div class="c-form-check">
             <div class="check-active radio">
                 <span class="svg-radio">
-                    <input class="check-input radio" type="checkbox" value="all" data-id="product">
+                    <input class="check-input radio" id="two-tone-one" type="checkbox" value="all" data-id="product">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4">
                         <!-- For circles-->
                         <defs>
@@ -156,7 +213,7 @@
                         <circle class="main-circ" fill="#fff" cx="2" cy="2" r="1.9" />
                     </svg>
                 </span>
-                <label class="form-check-label" for="all">
+                <label class="form-check-label" for="two-tone-one">
                     Check Me
                 </label>
             </div>
@@ -164,8 +221,8 @@
         <div class="c-form-check">
             <div class="check-active radio">
                 <span class="svg-radio">
-                    <input class="check-input radio" type="checkbox" value="Pawstruck Subscription Box"
-                        data-id="product">
+                    <input class="check-input radio" id="two-tone-two" type="checkbox"
+                        value="Pawstruck Subscription Box" data-id="product">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 4 4">
                         <clipPath id="circ-clip">
                             <circle fill="#333" cx="2" cy="2" r="3.5" />
@@ -183,7 +240,7 @@
                         <circle class="main-circ" fill="#fff" cx="2" cy="2" r="1.9" />
                     </svg>
                 </span>
-                <label class="form-check-label" for="all">
+                <label class="form-check-label" for="two-tone-two">
                     Check me also
                 </label>
             </div>
@@ -199,7 +256,7 @@
                 </svg>
             </span>
             <label class="form-check-label" for="all">
-                Check me also
+                Hover me
             </label>
         </div>
     </div>
@@ -1100,14 +1157,115 @@
             <path class="LetterAnimate_path" d="M72,302.8h126.5H328" />
         </svg> -->
         <svg id="LetterAnimate" x="0px" y="0px" viewBox="0 0 500 500" x="0px" y="0px">
-        <style type="text/css">
-            .LetterAnimate_path{fill:none;stroke:#000000;stroke-miterlimit:10;}
-        </style>
-        <path class="LetterAnimate_path" id="LetterAnimate_first" d="M106.5,484.45L106.07,22.4"/>
-        <path class="LetterAnimate_path" id="LetterAnimate_second" d="M106.69,484.45c36.39,0,81.83,0.01,113.81,0.01c120,0,170.25-34.95,170.25-122.81
+            <style type="text/css">
+                .LetterAnimate_path {
+                    fill: none;
+                    stroke: #000000;
+                    stroke-miterlimit: 10;
+                }
+            </style>
+            <path class="LetterAnimate_path" id="LetterAnimate_first" d="M106.5,484.45L106.07,22.4" />
+            <path class="LetterAnimate_path" id="LetterAnimate_second" d="M106.69,484.45c36.39,0,81.83,0.01,113.81,0.01c120,0,170.25-34.95,170.25-122.81
         c0-91.15-99.25-111.64-152.57-111.64c69.46,0,130.24-41.51,130.24-115.51c0-69-47.14-111.48-138.92-111.48
-        c-45.89,0-71.62-0.62-123.42-0.62"/>
+        c-45.89,0-71.62-0.62-123.42-0.62" />
         </svg>
+    </div>
+    <style>
+        .imgRotate .item {
+            position: absolute;
+            width: calc(32.6% - 33px);
+            min-width: 0;
+            /* transition: transform .4s; */
+
+            div {
+                aspect-ratio: 3 / 4;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    color: transparent;
+                }
+            }
+        }
+
+        .imgRotate {
+            perspective: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            height: 300px;
+        }
+        .imgRotate-btns {
+            display: flex;
+            gap: 16px;
+        }
+        .imgRotate-btns button {
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+        .imgRotate-container {
+            position: relative;
+            width: 160px;
+            height: 120px;
+            transform-style: preserve-3d;
+        }
+        .imgRotate .item {
+            position: absolute;
+            width: 160px;
+            height: 120px;
+        }
+        .imgRotate .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <div class="imgRotate">
+        <div class="imgRotate-container">
+            <div class="imgRotate-inner item">
+                <div>
+
+                    <img src="/assets/Rectangle 2958-1.jpg" alt="Rotating Image" class="rotating-image">
+                </div>
+            </div>
+            <div class="imgRotate-inner item">
+                <div>
+                    <img src="/assets/Rectangle 2958-2.jpg" alt="Rotating Image" class="rotating-image">
+                </div>
+            </div>
+            <div class="imgRotate-inner item">
+                <div>
+                    <img src="/assets/Rectangle 2958-3.jpg" alt="Rotating Image" class="rotating-image">
+                </div>
+            </div>
+            <div class="imgRotate-inner item">
+                <div>
+                    <img src="/assets/Rectangle 2958-4.jpg" alt="Rotating Image" class="rotating-image">
+                </div>
+            </div>
+            <div class="imgRotate-inner item">
+                <div>
+                    <img src="/assets/Rectangle 2958-5.jpg" alt="Rotating Image" class="rotating-image">
+                </div>
+            </div>
+            <div class="imgRotate-inner item">
+                <div>
+                    <img src="/assets/Rectangle 2958-6.jpg" alt="Rotating Image" class="rotating-image">
+                </div>
+            </div>
+        </div>
+        <div class="imgRotate-btns">
+            <button id="imgRotate-prev">← Prev</button>
+            <button id="imgRotate-next">Next →</button>
+        </div>
     </div>
 </div>
 

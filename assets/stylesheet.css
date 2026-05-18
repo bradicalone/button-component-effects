@@ -29,7 +29,6 @@ h3 {
   position: relative;
   margin-top: 100px;
 }
-
 .c-gradient-effect button.c-gradient-btn {
   font-size: 30px;
   padding: 10px 15px;
@@ -38,11 +37,9 @@ h3 {
   background: linear-gradient(135deg, #09ff00, #fff, #01bb1a);
   background-size: 250% 200%;
 }
-
 .c-gradient-effect .animate-gradient {
   animation: gradient 2s ease-in-out forwards;
 }
-
 @keyframes gradient {
   0% {
     background-position: 0% 0%;
@@ -60,7 +57,6 @@ h3 {
   position: relative;
   margin: 50px 0;
 }
-
 .c-letter-roll button.c-letter-btn {
   font-size: 30px;
   padding: 15px 20px;
@@ -69,18 +65,15 @@ h3 {
   background: #2d2e43;
   color: #fff;
 }
-
 .c-letter-roll button.c-letter-btn > div {
   overflow: hidden;
   line-height: 27px;
 }
-
 .c-letter-roll span {
   will-change: transform;
   transition-duration: 0.5s;
   transition-timing-function: ease;
 }
-
 .c-letter-roll button.c-letter-btn:hover span {
   transform: translateY(30px);
 }
@@ -90,7 +83,6 @@ h3 {
   position: relative;
   margin: 50px 0;
 }
-
 .c-word-roll button.c-word-btn {
   font-size: 26px;
   line-height: 50px;
@@ -102,7 +94,6 @@ h3 {
   height: 50px;
   cursor: pointer;
 }
-
 .c-word-roll .c-word-rotate {
   display: block;
   transform-style: preserve-3d;
@@ -112,7 +103,6 @@ h3 {
   left: 0;
   transform: rotateX(0deg);
 }
-
 .c-word-roll .c-word-rotate span {
   position: absolute;
   text-align: center;
@@ -121,22 +111,18 @@ h3 {
   width: 100%;
   -webkit-backface-visibility: hidden;
 }
-
 .c-word-roll .c-word-rotate span:nth-child(1) {
   /* translateZ half the height of the item rotating or half the height of the font size */
   transform: rotateX(90deg) translateZ(15px);
 }
-
 .c-word-roll .c-word-rotate span:nth-child(2) {
   /* translateZ half the height of the item rotating or half the height of the font size */
   transform: rotateX(180deg) translateZ(15px);
 }
-
 .c-word-roll .c-word-rotate span:nth-child(3) {
   /* translateZ half the height of the item rotating or half the height of the font size */
   transform: rotateX(270deg) translateZ(15px);
 }
-
 .c-word-roll .c-word-rotate span:nth-child(4) {
   /* translateZ half the height of the item rotating or half the height of the font size */
   transform: rotateX(360deg) translateZ(15px);
@@ -148,7 +134,6 @@ h3 {
   position: relative;
   margin: 0 auto;
 }
-
 .c_input-rotate .c_input-elements {
   color: #D58778;
   position: absolute;
@@ -156,7 +141,6 @@ h3 {
   height: 100%;
   font-size: 20px;
 }
-
 .c_input-rotate .c_input-wrap {
   position: relative;
   bottom: 0;
@@ -167,7 +151,6 @@ h3 {
   pointer-events: none;
   overflow: hidden;
 }
-
 .c_input-rotate .c_input-wrap span {
   display: block;
   position: absolute;
@@ -175,7 +158,6 @@ h3 {
   bottom: 0;
   transform: translateY(-100%) translateY(-18px);
 }
-
 .c_input-rotate .c_input {
   position: absolute;
   bottom: 0px;
@@ -186,7 +168,6 @@ h3 {
   border-bottom: 1px solid;
   font-size: inherit;
 }
-
 .c_input-rotate .rotate_controls {
   display: inline-block;
   position: absolute;
@@ -196,14 +177,12 @@ h3 {
   height: 28px;
   z-index: 3;
 }
-
 .c_input-rotate .rotate_controls svg {
   position: absolute;
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
-
 .c_input-rotate .rotate_controls path,
 .c_input-rotate .rotate_controls circle {
   pointer-events: none;
@@ -214,7 +193,6 @@ h3 {
   position: relative;
   margin: 50px 0;
 }
-
 .c-ripple-click button.ripple-click-btn {
   font-size: 30px;
   padding: 15px 25px;
@@ -229,11 +207,9 @@ h3 {
   z-index: 0;
   outline: none;
 }
-
 .c-ripple-click button.ripple-click-btn > span {
   pointer-events: none;
 }
-
 .c-ripple-click button.ripple-click-btn span.ripple-click-effect {
   will-change: transform;
   position: absolute;
@@ -255,7 +231,6 @@ h3 {
   position: relative;
   margin: 50px 0;
 }
-
 .c-ripple-hover button.ripple-hover-btn {
   font-size: 30px;
   padding: 15px 25px;
@@ -270,11 +245,9 @@ h3 {
   z-index: 0;
   outline: none;
 }
-
 .c-ripple-hover button.ripple-hover-btn > span {
   pointer-events: none;
 }
-
 .c-ripple-hover button.ripple-hover-btn span.ripple-hover-effect {
   will-change: transform;
   position: absolute;
@@ -296,14 +269,12 @@ h3 {
   margin: 50px 0;
   text-align: center;
 }
-
 .c-line-hover a.line-hover-btn {
   position: relative;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
 }
-
 .c-line-hover a.line-hover-btn::after {
   content: "";
   position: absolute;
@@ -314,10 +285,9 @@ h3 {
   background: currentColor;
   transform: scale(1, 1);
   transform-origin: left center;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   pointer-events: none;
 }
-
 .c-line-hover a.line-hover-btn:hover::after {
   transform: scale(0, 1);
 }
@@ -327,7 +297,6 @@ h3 {
   position: relative;
   margin: 50px 0;
 }
-
 .c-gradient-hover a.section-cta {
   margin: 0 auto;
   font-size: 14px;
@@ -344,7 +313,6 @@ h3 {
   border: none;
   cursor: pointer;
 }
-
 .c-gradient-hover .bordered-cta {
   margin: 0 auto;
   width: 100%;
@@ -359,20 +327,17 @@ h3 {
   text-align: center;
   font-family: Futura-PT-Medium;
 }
-
 .c-gradient-hover .gradient-hover-bordered {
   background: linear-gradient(to right, transparent, transparent 40%, #D58778 80%);
   background-size: 300%;
   transition: background-position 550ms ease-in, color 555ms ease-in, border 555ms ease-in;
   background-position: left;
 }
-
 .c-gradient-hover .gradient-hover-bordered:hover {
   background-position: right;
   color: #000;
   border: 1px solid #000;
 }
-
 .c-gradient-hover a.gradient-hover-btn {
   background: #EBBAA3;
   background: linear-gradient(to right, #EBBAA3, #EBBAA3 40%, #D58778 80%);
@@ -380,12 +345,10 @@ h3 {
   transition: background-position 550ms ease-in, color 555ms ease-in;
   background-position: left;
 }
-
 .c-gradient-hover a.gradient-hover-btn:hover {
   background-position: right;
   color: #fff;
 }
-
 .c-gradient-hover a.gradient-hover-btn-one {
   background: #EBBAA3;
   background: linear-gradient(to right, #EBBAA3, #EBBAA3 20%, #D58778 80%);
@@ -393,12 +356,10 @@ h3 {
   transition: background-position 550ms ease-in-out, color 555ms ease-in;
   background-position: left;
 }
-
 .c-gradient-hover a.gradient-hover-btn-one:hover {
   background-position: right;
   color: #fff;
 }
-
 .c-gradient-hover a.gradient-hover-btn-two {
   background: #EBBAA3;
   background: linear-gradient(to right, #EBBAA3, #D58778, #EBBAA3);
@@ -406,12 +367,10 @@ h3 {
   transition: background-position 550ms ease-in, color 555ms ease-in;
   background-position: left;
 }
-
 .c-gradient-hover a.gradient-hover-btn-two:hover {
   background-position: right;
   color: #fff;
 }
-
 .c-gradient-hover a.gradient-hover-btn-three {
   background: #EBBAA3;
   background: linear-gradient(to right, #EBBAA3, #EBBAA3 20%, #D58778 50%, #EBBAA3 80%);
@@ -419,7 +378,6 @@ h3 {
   transition: background-position 1250ms ease-in-out, color 1250ms ease-in;
   background-position: left;
 }
-
 .c-gradient-hover a.gradient-hover-btn-three:hover {
   background-position: right;
   color: #fff;
@@ -432,7 +390,6 @@ h3 {
   margin: 0 auto;
   width: 500px;
 }
-
 .c-arrow-down .m-arrow-down {
   margin: 0 auto;
   font-size: 25px;
@@ -447,12 +404,10 @@ h3 {
   border: none;
   overflow: hidden;
 }
-
 .c-arrow-down .m-arrow-down span {
   display: block;
   animation: 1.5s infinite arrowin;
 }
-
 @keyframes arrowin {
   0% {
     transform: translateY(-100%);
@@ -470,16 +425,13 @@ h3 {
   position: relative;
   margin: 50px;
 }
-
 .droplets svg {
   overflow: visible;
 }
-
 .droplets .circles {
   filter: url("#circle-gooey");
   -webkit-filter: url("#circle-gooey");
 }
-
 .droplets .droplets {
   font-size: 38px;
   fill: #fff;
@@ -491,8 +443,9 @@ h3 {
   padding-left: 1.5em;
   margin-bottom: 0.125rem;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
-
 .c-form-check .svg-radio {
   position: relative;
   display: inline-block;
@@ -501,11 +454,9 @@ h3 {
   padding: 5px;
   border-radius: 50%;
 }
-
 .c-form-check .svg-radio:hover .main-circ {
   transform: scale(0.9);
 }
-
 .c-form-check .svg-radio svg {
   overflow: visible;
   pointer-events: none;
@@ -516,44 +467,36 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .c-form-check .svg-radio svg .top-circles {
   filter: url("#check-gooey");
   -webkit-filter: url("#check-gooey");
 }
-
 .c-form-check .svg-radio svg .top-circles circle {
   transform-origin: center;
   transform: translateY(-135%);
   will-change: transform;
 }
-
 .c-form-check .svg-radio svg .main-circ {
   transform-origin: center;
   transition: transform 0.5s ease;
   transform: scale(1);
 }
-
 .c-form-check .svg-radio svg .scale-second-circ {
   animation: animateSecond 1s 0.5s ease forwards;
 }
-
 .c-form-check .svg-radio svg .scale-third-circ {
   animation: animateThird 1.4s 0.7s ease forwards;
 }
-
 @keyframes animateSecond {
   to {
     transform: translateY(0%);
   }
 }
-
 @keyframes animateThird {
   to {
     transform: translateY(0%);
   }
 }
-
 .c-form-check .check-input.radio {
   width: inherit;
   height: inherit;
@@ -574,25 +517,22 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .c-form-check .check-active.radio {
   display: flex;
   align-items: center;
   padding: 9px;
   margin: 7px 0;
+  width: 300px;
 }
-
 .c-form-check .check-active.radio:hover {
   background-color: aliceblue;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   transition: background-color 0.4s ease-in-out;
 }
-
 .c-form-check .check-input.radio {
   border-radius: 50%;
 }
-
 .c-form-check label {
   display: inline-block;
   font-size: 1.5rem;
@@ -602,7 +542,6 @@ h3 {
 .c-input-hover {
   margin-left: 50px;
 }
-
 .c-input-hover .flex-radio {
   position: relative;
   display: flex;
@@ -611,7 +550,6 @@ h3 {
   width: 35px;
   height: 35px;
 }
-
 .c-input-hover .flex-radio input {
   position: absolute;
   border-radius: 50%;
@@ -621,20 +559,17 @@ h3 {
   background-color: blue;
   -webkit-appearance: none;
 }
-
 .c-input-hover .flex-radio input:hover ~ svg circle {
   stroke-dashoffset: 0;
 }
-
 .c-input-hover svg {
   width: 100%;
 }
-
 .c-input-hover svg circle {
   stroke: #222222;
   stroke-width: 1px;
   fill: transparent;
-  transition: stroke-dashoffset .7s ease-in-out;
+  transition: stroke-dashoffset 0.7s ease-in-out;
   stroke-dasharray: 82;
   stroke-dashoffset: 82;
 }
@@ -642,20 +577,17 @@ h3 {
 .c-night-day {
   margin: 5rem 0;
 }
-
 .c-night-day .toggle-night-day {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
-
 .c-night-day .toggle-night-day p {
   margin-bottom: 3px;
   font-size: 30px;
   margin-bottom: 10px;
 }
-
 .c-night-day .switch {
   position: relative;
   display: block;
@@ -670,7 +602,6 @@ h3 {
   cursor: pointer;
   box-sizing: content-box;
 }
-
 .c-night-day .switch-input {
   position: absolute;
   top: 0;
@@ -680,18 +611,15 @@ h3 {
   width: 100%;
   height: 100%;
 }
-
 .c-night-day .switch-input:checked ~ .switch-handle {
   transform: translateX(200%);
   box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.6), inset 0px 0.5 rgba(255, 255, 255, 0.2);
 }
-
 .c-night-day svg {
   width: 100%;
   height: 100%;
   position: absolute;
 }
-
 .c-night-day .switch-label {
   position: relative;
   display: block;
@@ -700,7 +628,6 @@ h3 {
   box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), inset 0 0 7px rgba(0, 0, 0, 0.5);
   box-sizing: content-box;
 }
-
 .c-night-day .switch-background {
   display: block;
   height: inherit;
@@ -712,7 +639,6 @@ h3 {
   pointer-events: none;
   transition: background-position 2s ease;
 }
-
 .c-night-day .switch-handle {
   position: absolute;
   top: 9.5px;
@@ -723,7 +649,6 @@ h3 {
   border-radius: 100%;
   box-shadow: -4px 5px 5px rgba(0, 0, 0, 0.2);
 }
-
 .c-night-day .switch-handle::before {
   content: "";
   position: absolute;
@@ -737,7 +662,6 @@ h3 {
   border-radius: 50%;
   box-shadow: inset 0 1px 1px rgba(225, 225, 225, 0.19), inset 0 0.5px rgba(41, 41, 41, 0.35), 0px -0.5px rgba(255, 255, 255, 0.07);
 }
-
 .c-night-day .switch-handle,
 .c-night-day .switch-label {
   transition: transform 0.6s ease-out;
@@ -745,38 +669,31 @@ h3 {
   -moz-transition: transform 0.6s ease-out;
   -o-transition: transform 0.6s ease-out;
 }
-
 .c-night-day #sun-highlight-balls circle {
   transform: translate(0, 0);
   transition: transform 1s ease, opacity 1s ease;
 }
-
 .c-night-day #moon,
 .c-night-day #sun {
   will-change: transform;
 }
-
 .c-night-day .night-star {
   opacity: 0;
   transform: scaleX(0);
   transform-origin: center;
 }
-
 .c-night-day .day-star-big {
   transform-origin: 92px 288px;
   opacity: 0;
 }
-
 .c-night-day .day-star {
   opacity: 0;
   transform-origin: 399px 165px;
 }
-
 .c-night-day .twinkle {
   transform-origin: center;
   animation: twinkle 2.8s ease infinite forwards;
 }
-
 @keyframes twinkle {
   0% {
     transform: scale(0);
@@ -791,11 +708,9 @@ h3 {
     opacity: 0;
   }
 }
-
 .c-night-day .twinkle-day {
-  animation: twinkleDay .9s ease infinite alternate;
+  animation: twinkleDay 0.9s ease infinite alternate;
 }
-
 @keyframes twinkleDay {
   0% {
     transform: scale(1);
@@ -803,7 +718,7 @@ h3 {
   }
   100% {
     transform: scale(0.2);
-    opacity: .2;
+    opacity: 0.2;
   }
 }
 
@@ -812,19 +727,18 @@ h3 {
   text-align: center;
   position: relative;
 }
-
 .smoke-stack svg {
   position: absolute;
   bottom: 0;
   left: 0;
   overflow: visible;
   width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
 }
-
 .smoke-stack .smoke {
   transform-origin: 355.5px 17px;
 }
-
 .smoke-stack .rear_wheel {
   transform-origin: 113.1px 304.2px;
 }
@@ -842,7 +756,6 @@ h3 {
   margin: 1rem auto;
   font-weight: 600;
 }
-
 .loading-one .rotate {
   width: 200px;
   margin: 10px 15px;
@@ -850,7 +763,6 @@ h3 {
   height: 20px;
   margin: 0 auto;
 }
-
 .loading-one .rotate div {
   border-radius: 50%;
   background: black;
@@ -872,7 +784,6 @@ h3 {
   margin: 1rem auto;
   font-weight: 600;
 }
-
 .loading-two .rotate {
   width: 200px;
   margin: 0 auto;
@@ -880,7 +791,6 @@ h3 {
   height: 20px;
   margin: 0 auto;
 }
-
 .loading-two .rotate div {
   border-radius: 50%;
   background: black;
@@ -894,13 +804,11 @@ h3 {
   position: relative;
   margin: 50px 0;
 }
-
 .c-roll-off .content {
   overflow: hidden;
   padding: 10px 0;
   margin: 0 10px;
 }
-
 .c-roll-off button.c-roll-btn {
   font-size: 30px;
   border: none;
@@ -909,15 +817,12 @@ h3 {
   line-height: 0.5;
   color: #fff;
 }
-
 .c-roll-off button.c-roll-btn svg {
   overflow: visible;
 }
-
 .c-roll-off button.c-roll-btn .roll-btn-text {
   line-height: 27px;
 }
-
 .c-roll-off button.c-roll-btn .roll-btn-text span {
   display: inline-block;
   white-space: pre;
@@ -928,25 +833,20 @@ h3 {
   position: relative;
   margin: 100px;
 }
-
 .playground svg {
   overflow: visible;
 }
-
 .playground .circless {
   filter: url("#circle-gooey");
   filter: url("#rect-gooey");
 }
-
 .playground .drip {
   animation: easeOutBounce 4s;
 }
-
 .playground .Rrrrr {
   font-size: 38px;
   fill: #fff;
 }
-
 @keyframes drip {
   0% {
     transform: translateX(0);
@@ -962,7 +862,6 @@ h3 {
   display: flex;
   justify-content: center;
 }
-
 .for-product-loading button.c-loader-spin {
   width: 135px;
   height: 50px;
@@ -972,24 +871,19 @@ h3 {
   background: #1A4124;
   border-radius: 5px;
 }
-
 .for-product-loading .innerText {
   pointer-events: none;
 }
-
 .for-product-loading svg {
   width: 100%;
   height: 100%;
 }
-
 .for-product-loading svg circle {
   transform: translate(50%, 50%);
 }
-
 .for-product-loading svg circle.first {
   transform: translate(50%, 50%);
 }
-
 .for-product-loading svg circle.second {
   transform: translate(50%, 50%);
 }
@@ -999,25 +893,20 @@ h3 {
   display: flex;
   justify-content: center;
 }
-
 .lightning #bolt {
   transform: translate(0, 0%);
 }
-
 .lightning #base {
   opacity: 0;
 }
-
 .lightning g {
   transform: translate(0, 10%) scale(0);
   transform-origin: center bottom;
   opacity: 1;
 }
-
 .lightning .animateSpark {
-  animation: .35s ease-out forwards move_sparks;
+  animation: 0.35s ease-out forwards move_sparks;
 }
-
 @keyframes move_sparks {
   0% {
     transform: translate(0, 10%) scale(0);
@@ -1035,16 +924,13 @@ h3 {
 .LetterAnimate {
   padding: 75px 75px;
 }
-
 .LetterAnimate svg {
   visibility: visible;
 }
-
 .LetterAnimate .LetterAnimate_path {
-  stroke-width: 20;
+  stroke-width: 30;
 }
-
 .LetterAnimate path {
   stroke-linecap: round;
   stroke-linejoin: round;
-}
+}/*# sourceMappingURL=stylesheet.css.map */
